@@ -18,10 +18,14 @@ export function ResultsSection() {
           >
             {/* Decreased max width to max-w-sm, removed forced aspect ratio, changed to object-contain */}
             <div className="relative w-full max-w-sm mx-auto rounded-2xl overflow-hidden shadow-md bg-gray-50 flex items-center justify-center p-4">
-              <img 
+              <motion.img 
                 src="/images/clinical-results.jpg" 
                 alt="Clinical Results Before and After" 
                 className="w-full h-auto object-contain"
+                initial={{ scale: 1 }}
+                whileInView={{ scale: 1.05 }}
+                viewport={{ once: false }}
+                transition={{ duration: 12, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }}
               />
             </div>
           </motion.div>

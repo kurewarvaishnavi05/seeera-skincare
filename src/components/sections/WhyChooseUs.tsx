@@ -20,12 +20,24 @@ export function WhyChooseUs() {
         <div className="flex flex-col lg:flex-row gap-16 items-center">
           <div className="flex-1">
             <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-heading text-primary-brown mb-10 overflow-hidden flex"
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl lg:text-6xl font-heading text-primary-brown mb-10"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+              }}
             >
-              Why SEEERA?
+              {"Why SEEERA?".split(" ").map((word, i) => (
+                <motion.span 
+                  key={i} 
+                  className="mr-3 block"
+                  variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.2, 0.65, 0.3, 0.9] } } }}
+                >
+                  {word}
+                </motion.span>
+              ))}
             </motion.h2>
             <div className="space-y-10">
               {benefits.map((benefit, i) => (

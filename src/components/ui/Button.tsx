@@ -1,6 +1,9 @@
-import React from 'react';
+"use client";
+
+import React, { useRef, useState } from 'react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import { motion } from 'framer-motion';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -12,13 +15,32 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = 'primary', size = 'md', ...props }, ref) => {
-    const baseStyles = "inline-flex items-center justify-center rounded-full transition-all duration-300 font-medium tracking-wide";
+  ({ className, variant = 'primary', size = 'md', children, ...props }, ref) => {
+    const internalRef = useRef<HTMLButtonElement>(null);
+    const resolvedRef = (ref as React.MutableRefObject<HTMLButtonElement>) || internalRef;
+    
+    const [position, setPosition] = useState({ x: 0, y: 0 });
+
+    const handleMouse = (e: React.MouseEvent<HTMLButtonElement>) => {
+      if (!resolvedRef.current) return;
+      const { clientX, clientY } = e;
+      const { height, width, left, top } = resolvedRef.current.getBoundingClientRect();
+      const middleX = clientX - (left + width / 2);
+      const middleY = clientY - (top + height / 2);
+      // Magnetic pull strength (0.25 = moves 25% towards the mouse relative to center)
+      setPosition({ x: middleX * 0.25, y: middleY * 0.25 }); 
+    };
+
+    const reset = () => {
+      setPosition({ x: 0, y: 0 });
+    };
+
+    const baseStyles = "relative inline-flex items-center justify-center rounded-full transition-colors duration-300 font-medium tracking-wide";
     
     const variants = {
       primary: "bg-primary-brown text-cream hover:bg-dark-brown hover:shadow-lg hover:-translate-y-0.5",
       secondary: "bg-accent-brown text-white hover:bg-primary-brown hover:shadow-lg",
-      outline: "border-2 border-primary-brown text-primary-brown hover:bg-primary-brown hover:text-cream",
+      outline: "border-2 border-primary-brown text-primary-brown hover:bg-primary-brown hover:text-cream hover:shadow-lg hover:-translate-y-0.5",
       ghost: "text-primary-brown hover:bg-primary-brown/10",
     };
     
@@ -29,11 +51,17 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     };
 
     return (
-      <button
-        ref={ref}
+      <motion.button
+        ref={resolvedRef}
         className={cn(baseStyles, variants[variant], sizes[size], className)}
+        onMouseMove={handleMouse}
+        onMouseLeave={reset}
+        animate={{ x: position.x, y: position.y }}
+        transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
         {...props}
-      />
+      >
+        <span className="relative z-10 pointer-events-none flex items-center justify-center">{children}</span>
+      </motion.button>
     );
   }
 );

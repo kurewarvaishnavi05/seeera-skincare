@@ -1,12 +1,20 @@
 "use client";
 
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from '../ui/Button';
 
 export function HeroSection() {
+  const { scrollY } = useScroll();
+  // Move the video down smoothly as the user scrolls down
+  const y = useTransform(scrollY, [0, 1000], ["0%", "25%"]);
+
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 z-0 overflow-hidden bg-black">
+      {/* 
+        We make the container taller (120%) and scale it slightly so when it shifts via parallax, 
+        it doesn't reveal the background underneath.
+      */}
+      <motion.div style={{ y }} className="absolute inset-0 z-0 overflow-hidden bg-black scale-110">
         <video 
           autoPlay 
           loop 
@@ -16,8 +24,7 @@ export function HeroSection() {
         >
           <source src="/videos/hero.mp4.mp4" type="video/mp4" />
         </video>
-        {/* Removed overlay to keep video raw and natural */}
-      </div>
+      </motion.div>
 
       <div className="absolute bottom-12 left-0 right-0 z-10 container mx-auto px-6 flex justify-center">
         <motion.div 

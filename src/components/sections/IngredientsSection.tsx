@@ -34,10 +34,14 @@ export function IngredientsSection() {
             transition={{ duration: 0.8 }}
             className="rounded-[32px] overflow-hidden shadow-2xl shadow-primary-brown/20 mx-auto w-full max-w-sm bg-white"
           >
-            <img 
+            <motion.img 
               src="/science-of-glow-1.jpg" 
-              alt="PDRN + CICA Lip Balm - Enhance natural lip glow, deep lip repair, soft nourished lip" 
-              className="w-full h-auto object-contain hover:scale-105 transition-transform duration-1000"
+              alt="PDRN + CICA Lip Balm" 
+              className="w-full h-auto object-contain"
+              initial={{ scale: 1 }}
+              whileInView={{ scale: 1.08 }}
+              viewport={{ once: false }}
+              transition={{ duration: 15, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }}
             />
           </motion.div>
           
@@ -48,10 +52,14 @@ export function IngredientsSection() {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="rounded-[32px] overflow-hidden shadow-2xl shadow-primary-brown/20 mx-auto w-full max-w-sm bg-white"
           >
-            <img 
+            <motion.img 
               src="/science-of-glow-2.jpg" 
-              alt="PDRN, CICA, Niacinamide, Advanced UV Filters" 
-              className="w-full h-auto object-contain hover:scale-105 transition-transform duration-1000"
+              alt="PDRN, CICA, Niacinamide" 
+              className="w-full h-auto object-contain"
+              initial={{ scale: 1.08 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: false }}
+              transition={{ duration: 15, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }}
             />
           </motion.div>
         </div>
