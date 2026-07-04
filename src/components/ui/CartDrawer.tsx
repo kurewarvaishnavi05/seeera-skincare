@@ -44,9 +44,9 @@ export function CartDrawer() {
             <div className="p-6 bg-white/50 border-b border-primary-brown/10">
               <p className="text-sm text-center mb-3 text-dark-brown font-medium">
                 {remaining > 0 ? (
-                  <>You're <span className="text-primary-brown font-bold">₹{remaining}</span> away from Free Shipping!</>
+                  <>You&apos;re <span className="text-primary-brown font-bold">₹{remaining}</span> away from Free Shipping!</>
                 ) : (
-                  <span className="text-primary-brown font-bold">You've unlocked Free Shipping!</span>
+                  <span className="text-primary-brown font-bold">You&apos;ve unlocked Free Shipping!</span>
                 )}
               </p>
               <div className="w-full h-2 bg-beige/50 rounded-full overflow-hidden relative">

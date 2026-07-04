@@ -60,7 +60,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               </div>
               
               <div className="mt-16 pt-8 border-t border-primary-brown/10">
-                <h3 className="font-heading text-xl text-primary-brown mb-4">Why you'll love it</h3>
+                <h3 className="font-heading text-xl text-primary-brown mb-4">Why you&apos;ll love it</h3>
                 <ul className="space-y-3 text-dark-brown">
                   <li className="flex items-center">
                     <span className="w-1.5 h-1.5 rounded-full bg-accent-brown mr-3 shrink-0"></span>
