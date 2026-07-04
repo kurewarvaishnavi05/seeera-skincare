@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { HeroSection } from "@/components/sections/HeroSection";
+import { AnnouncementBar } from "@/components/sections/AnnouncementBar";
 import { FeaturedProducts } from "@/components/sections/FeaturedProducts";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { IngredientsSection } from "@/components/sections/IngredientsSection";
@@ -10,25 +11,26 @@ import { ResultsSection } from "@/components/sections/ResultsSection";
 import { CustomerReviews } from "@/components/sections/CustomerReviews";
 import { InstagramGallery } from "@/components/sections/InstagramGallery";
 import { FAQSection } from "@/components/sections/FAQSection";
-import { Newsletter } from "@/components/sections/Newsletter";
-import { Marquee } from "@/components/ui/Marquee";
+import { TrustBar } from "@/components/sections/TrustBar";
+import { BlogPreview } from "@/components/sections/BlogPreview";
 
 export default function Home() {
   return (
     <main className="min-h-screen">
       <Navbar />
       <HeroSection />
-      <Marquee />
+      <AnnouncementBar />
+      <TrustBar />
       <FeaturedProducts />
+      <WhyChooseUs />
       <AboutSection />
       <IngredientsSection />
-      <WhyChooseUs />
       <BestSellers />
       <ResultsSection />
       <CustomerReviews />
-      <InstagramGallery />
+      <BlogPreview />
       <FAQSection />
-      <Newsletter />
+      <InstagramGallery />
       <Footer />
     </main>
   );

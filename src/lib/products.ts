@@ -7,6 +7,8 @@ export interface Product {
   category: string;
   image: string;
   description: string;
+  badges?: string[];
+  tags?: string[];
 }
 
 export const products: Product[] = [
@@ -18,7 +20,9 @@ export const products: Product[] = [
     formattedPrice: "₹599.00",
     category: "Sun Care",
     image: "https://cdn.shopify.com/s/files/1/0935/2131/4156/files/1.png?v=1780647474",
-    description: "HydraShield SPF 50 PA+++ is a lightweight, broad-spectrum sunscreen that provides advanced protection against harmful UVA and UVB rays while keeping skin hydrated, nourished, and comfortable throughout the day. Formulated with Niacinamide, Hyaluronic Acid, Ceramide Complex, Vitamin E, and Coconut Oil."
+    description: "HydraShield SPF 50 PA+++ is a lightweight, broad-spectrum sunscreen that provides advanced protection against harmful UVA and UVB rays while keeping skin hydrated, nourished, and comfortable throughout the day. Formulated with Niacinamide, Hyaluronic Acid, Ceramide Complex, Vitamin E, and Coconut Oil.",
+    badges: ["Best Seller"],
+    tags: ["SPF 50+", "Hydrating", "UV Protection"]
   },
   {
     id: 2,
@@ -28,7 +32,9 @@ export const products: Product[] = [
     formattedPrice: "₹499.00",
     category: "Lip Care",
     image: "https://cdn.shopify.com/s/files/1/0935/2131/4156/files/option_1_jpg.jpg?v=1771262475",
-    description: "A deeply nourishing lip balm infused with CICA and PDRN to repair dry, chapped lips while providing a smooth, glossy finish and lasting hydration."
+    description: "A deeply nourishing lip balm infused with CICA and PDRN to repair dry, chapped lips while providing a smooth, glossy finish and lasting hydration.",
+    badges: ["New", "Dermatologist Tested"],
+    tags: ["PDRN + CICA", "Hydrating"]
   },
   {
     id: 3,
@@ -38,7 +44,9 @@ export const products: Product[] = [
     formattedPrice: "₹1299.00",
     category: "Sun Care",
     image: "https://cdn.shopify.com/s/files/1/0935/2131/4156/files/Seeera_Sunscreen.webp?v=1772965540",
-    description: "A premium sunscreen infused with Salmon PDRN and Centella Asiatica (CICA). Offers unmatched barrier repair, intense hydration, and high-performance sun protection without the white cast."
+    description: "A premium sunscreen infused with Salmon PDRN and Centella Asiatica (CICA). Offers unmatched barrier repair, intense hydration, and high-performance sun protection without the white cast.",
+    badges: ["Best Seller"],
+    tags: ["SPF 50+ PA++++", "PDRN + CICA", "UV Protection"]
   },
   {
     id: 4,
@@ -48,7 +56,9 @@ export const products: Product[] = [
     formattedPrice: "₹1618.00",
     category: "Sets",
     image: "https://cdn.shopify.com/s/files/1/0935/2131/4156/files/Combo.webp?v=1771121558",
-    description: "The ultimate protection and repair set. Combine the healing power of our CICA PDRN Sunscreen with the intense nourishment of the CICA PDRN Lip Balm for complete daily care."
+    description: "The ultimate protection and repair set. Combine the healing power of our CICA PDRN Sunscreen with the intense nourishment of the CICA PDRN Lip Balm for complete daily care.",
+    badges: ["Best Value"],
+    tags: ["Set", "PDRN + CICA"]
   }
 ];
 

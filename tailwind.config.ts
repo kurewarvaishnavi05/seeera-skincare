@@ -11,6 +11,7 @@ const config: Config = {
       colors: {
         'primary-brown': '#613B2B',
         'dark-brown': '#7A5F4E',
+        'dark-brown-red': '#5C2E2E',
         'accent-brown': '#A87B63',
         'cream': '#ECE4DD',
         'beige': '#C8B29D',

@@ -41,6 +41,7 @@ export function StickyCartBar({ product }: StickyCartBarProps) {
         <div className="flex items-center space-x-4">
           <p className="text-dark-brown font-medium md:hidden">{product.formattedPrice}</p>
           <Button 
+            className="bg-dark-brown-red hover:bg-primary-brown text-white"
             onClick={() => addItem({
               id: product.id,
               name: product.name,

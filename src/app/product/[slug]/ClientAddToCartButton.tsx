@@ -10,7 +10,7 @@ export function ClientAddToCartButton({ product }: { product: Product }) {
   return (
     <Button 
       size="lg" 
-      className="w-full py-4 text-lg shadow-xl"
+      className="w-full py-4 text-lg shadow-xl bg-dark-brown-red hover:bg-primary-brown text-white"
       onClick={() => addItem({
         id: product.id,
         name: product.name,

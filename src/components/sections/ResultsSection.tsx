@@ -14,13 +14,14 @@ export function ResultsSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
+            className="flex justify-center"
           >
-            {/* Showing the full uploaded split image as requested */}
-            <div className="relative w-full max-w-2xl mx-auto aspect-square md:aspect-[4/5] rounded-2xl overflow-hidden shadow-md">
+            {/* Decreased max width to max-w-sm, removed forced aspect ratio, changed to object-contain */}
+            <div className="relative w-full max-w-sm mx-auto rounded-2xl overflow-hidden shadow-md bg-gray-50 flex items-center justify-center p-4">
               <img 
-                src="/images/split-face.jpg" 
-                alt="Clinical Results" 
-                className="w-full h-full object-cover"
+                src="/images/clinical-results.jpg" 
+                alt="Clinical Results Before and After" 
+                className="w-full h-auto object-contain"
               />
             </div>
           </motion.div>
@@ -54,7 +55,7 @@ export function ResultsSection() {
                 100% felt their skin was deeply hydrated
               </li>
             </ul>
-            <Button size="lg">Shop The Routine</Button>
+            <Button size="lg" className="bg-dark-brown-red hover:bg-[#522929] text-white border-none">Shop The Routine</Button>
           </motion.div>
         </div>
       </div>

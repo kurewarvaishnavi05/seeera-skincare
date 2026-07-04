@@ -3,14 +3,19 @@
 import { motion } from 'framer-motion';
 
 const benefits = [
-  { title: "Intense Hydration", desc: "Locks in moisture for up to 72 hours, ensuring a dewy finish." },
-  { title: "Glass Skin Glow", desc: "Brightens and evens tone for that coveted luminous look." },
-  { title: "Barrier Repair", desc: "Fortifies the skin's natural defenses against environmental stressors." },
+  { title: "Cellular-Level Rejuvenation", desc: "Powered by PDRN, our advanced formulations work deep within the dermis to repair damaged tissue, stimulate collagen production, and dramatically improve skin elasticity." },
+  { title: "Unrivaled Hydration & Glow", desc: "Our potent active complexes lock in moisture for 72+ hours while evening out your skin tone, leaving you with that coveted, luminous glass-skin radiance." },
+  { title: "Ultimate Barrier Defense", desc: "Infused with CICA and premium botanicals, SEEERA fortifies your skin's natural defenses, instantly soothing inflammation and shielding against harsh environmental stressors." },
 ];
 
 export function WhyChooseUs() {
   return (
-    <section className="py-24 bg-cream">
+    <section className="py-24 bg-cream overflow-hidden">
+      {/* Banner image added above the section as requested */}
+      <div className="w-full mb-24">
+        <img src="/images/why-seeera-wide-banner.jpg" alt="Seeera Skincare Products" className="w-full h-auto object-cover" />
+      </div>
+
       <div className="container mx-auto px-6">
         <div className="flex flex-col lg:flex-row gap-16 items-center">
           <div className="flex-1">
@@ -18,11 +23,11 @@ export function WhyChooseUs() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-heading text-primary-brown mb-8"
+              className="text-4xl md:text-5xl lg:text-6xl font-heading text-primary-brown mb-10"
             >
               Why SEEERA?
             </motion.h2>
-            <div className="space-y-8">
+            <div className="space-y-10">
               {benefits.map((benefit, i) => (
                 <motion.div 
                   key={benefit.title}
@@ -31,8 +36,8 @@ export function WhyChooseUs() {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.2, duration: 0.8 }}
                 >
-                  <h3 className="text-2xl font-heading text-primary-brown mb-2">{benefit.title}</h3>
-                  <p className="text-dark-brown font-light">{benefit.desc}</p>
+                  <h3 className="text-2xl font-heading text-primary-brown mb-3">{benefit.title}</h3>
+                  <p className="text-dark-brown font-light leading-relaxed text-lg">{benefit.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -43,10 +48,11 @@ export function WhyChooseUs() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="flex-1 w-full aspect-square bg-beige/40 rounded-full flex items-center justify-center p-8 relative"
+            className="flex-1 w-full aspect-square bg-dark-brown-red rounded-full flex items-center justify-center p-2 md:p-4 relative"
           >
-             <div className="absolute inset-4 border border-primary-brown/20 rounded-full overflow-hidden">
-                <img src="https://cdn.shopify.com/s/files/1/0935/2131/4156/files/option_1_jpg.jpg?v=1771262475" alt="Lifestyle" className="w-full h-full object-cover opacity-80 mix-blend-multiply" />
+             <div className="absolute inset-2 md:inset-4 rounded-full overflow-hidden bg-white">
+                {/* Updated the circle image to the newly uploaded image */}
+                <img src="/images/why-seeera.jpg" alt="Seeera Key Ingredients" className="w-full h-full object-cover" />
              </div>
           </motion.div>
         </div>
