@@ -23,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} ${cormorant.variable} bg-cream text-black font-sans min-h-screen flex flex-col`}>
+      <body className={`${inter.variable} ${cormorant.variable} bg-cream text-black font-sans min-h-screen flex flex-col`} suppressHydrationWarning={true}>
         <PageLoader />
         {children}
         <CartDrawer />
