@@ -8,10 +8,27 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      colors: {
+        'primary-brown': '#613B2B',
+        'dark-brown': '#7A5F4E',
+        'accent-brown': '#A87B63',
+        'cream': '#ECE4DD',
+        'beige': '#C8B29D',
+        'black': '#131315',
+        'white': '#FFFFFF',
+      },
+      fontFamily: {
+        heading: ['var(--font-cormorant)', 'serif'],
+        sans: ['var(--font-inter)', 'sans-serif'],
+      },
+      animation: {
+        marquee: 'marquee 30s linear infinite',
+      },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
       },
     },
   },
