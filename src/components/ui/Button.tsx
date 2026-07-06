@@ -62,6 +62,8 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             onMouseMove={handleMouse as any}
             onMouseLeave={reset}
             animate={{ x: position.x, y: position.y }}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
             {...rest}
           >
@@ -78,6 +80,8 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         onMouseMove={handleMouse}
         onMouseLeave={reset}
         animate={{ x: position.x, y: position.y }}
+        whileHover={{ scale: 1.03 }}
+        whileTap={{ scale: 0.97 }}
         transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
         {...props}
       >

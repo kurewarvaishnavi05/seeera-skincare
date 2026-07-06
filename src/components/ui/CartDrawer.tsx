@@ -71,41 +71,50 @@ export function CartDrawer() {
                 </div>
               ) : (
                 <div className="space-y-6">
-                  {items.map((item) => (
-                    <div key={item.id} className="flex gap-4">
-                      <div className="w-24 h-24 bg-white rounded-lg flex items-center justify-center overflow-hidden shrink-0 border border-primary-brown/10">
-                        <img src={item.image} alt={item.name} className="w-full h-full object-contain" />
-                      </div>
-                      <div className="flex-1 flex flex-col justify-between py-1">
-                        <div>
-                          <div className="flex justify-between items-start">
-                            <h3 className="font-heading text-primary-brown leading-tight pr-4">{item.name}</h3>
-                            <button onClick={() => removeItem(item.id)} className="text-dark-brown hover:text-accent-brown">
-                              <X className="w-4 h-4" />
-                            </button>
-                          </div>
-                          <p className="text-dark-brown font-medium mt-1">₹{item.price}</p>
+                  <AnimatePresence mode="popLayout">
+                    {items.map((item) => (
+                      <motion.div 
+                        layout
+                        initial={{ opacity: 0, scale: 0.95, y: 10 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
+                        key={item.id} 
+                        className="flex gap-4"
+                      >
+                        <div className="w-24 h-24 bg-white rounded-lg flex items-center justify-center overflow-hidden shrink-0 border border-primary-brown/10">
+                          <img src={item.image} alt={item.name} className="w-full h-full object-contain" />
                         </div>
-                        <div className="flex items-center space-x-4">
-                          <div className="flex items-center border border-primary-brown/20 rounded-full px-2 py-1 space-x-3">
-                            <button 
-                              onClick={() => item.quantity > 1 ? updateQuantity(item.id, item.quantity - 1) : removeItem(item.id)}
-                              className="text-primary-brown hover:text-accent-brown"
-                            >
-                              <Minus className="w-3 h-3" />
-                            </button>
-                            <span className="text-sm font-medium w-4 text-center text-primary-brown">{item.quantity}</span>
-                            <button 
-                              onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                              className="text-primary-brown hover:text-accent-brown"
-                            >
-                              <Plus className="w-3 h-3" />
-                            </button>
+                        <div className="flex-1 flex flex-col justify-between py-1">
+                          <div>
+                            <div className="flex justify-between items-start">
+                              <h3 className="font-heading text-primary-brown leading-tight pr-4">{item.name}</h3>
+                              <button onClick={() => removeItem(item.id)} className="text-dark-brown hover:text-accent-brown">
+                                <X className="w-4 h-4" />
+                              </button>
+                            </div>
+                            <p className="text-dark-brown font-medium mt-1">₹{item.price}</p>
+                          </div>
+                          <div className="flex items-center space-x-4">
+                            <div className="flex items-center border border-primary-brown/20 rounded-full px-2 py-1 space-x-3">
+                              <button 
+                                onClick={() => item.quantity > 1 ? updateQuantity(item.id, item.quantity - 1) : removeItem(item.id)}
+                                className="text-primary-brown hover:text-accent-brown"
+                              >
+                                <Minus className="w-3 h-3" />
+                              </button>
+                              <span className="text-sm font-medium w-4 text-center text-primary-brown">{item.quantity}</span>
+                              <button 
+                                onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                                className="text-primary-brown hover:text-accent-brown"
+                              >
+                                <Plus className="w-3 h-3" />
+                              </button>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
-                  ))}
+                      </motion.div>
+                    ))}
+                  </AnimatePresence>
                 </div>
               )}
             </div>
@@ -113,19 +122,30 @@ export function CartDrawer() {
             {/* Footer */}
             {items.length > 0 && (
               <div className="p-6 border-t border-primary-brown/10 bg-white">
+                
+                {/* Coupon Input */}
+                <div className="mb-6 flex gap-2">
+                  <input 
+                    type="text" 
+                    placeholder="Discount code" 
+                    className="flex-1 border border-primary-brown/20 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-primary-brown/50 bg-cream/30 placeholder:text-dark-brown/50"
+                  />
+                  <Button variant="outline" className="px-4 py-2 h-auto text-xs uppercase tracking-wider text-primary-brown border-primary-brown hover:bg-primary-brown hover:text-white transition-colors">Apply</Button>
+                </div>
+
                 <div className="flex justify-between items-center mb-6">
                   <span className="text-dark-brown text-lg font-heading">Subtotal</span>
-                  <span className="text-xl font-bold text-primary-brown font-heading">₹{subtotal}</span>
+                  <span className="text-xl font-bold text-primary-brown font-heading">₹{subtotal.toFixed(2)}</span>
                 </div>
                 <Button 
                   onClick={() => {
                     closeCart();
                     router.push('/checkout');
                   }}
-                  className="w-full py-4 text-lg" 
+                  className="w-full py-4 text-sm tracking-widest uppercase bg-dark-brown-red hover:bg-[#522929] text-white shadow-md hover:scale-[1.02] active:scale-95 transition-all" 
                   size="lg"
                 >
-                  Checkout
+                  Proceed to Checkout
                 </Button>
                 <p className="text-center text-xs text-dark-brown mt-4 tracking-widest uppercase">
                   Shipping & taxes calculated at checkout

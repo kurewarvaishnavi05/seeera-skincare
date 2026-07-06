@@ -5,11 +5,14 @@ import { motion } from 'framer-motion';
 import { Card } from '../ui/Card';
 import { Button } from '../ui/Button';
 import { useCartStore } from '@/store/useCartStore';
+import { useWishlistStore } from '@/store/useWishlistStore';
 import { products } from '@/lib/products';
 import Link from 'next/link';
+import { cn } from '../ui/Button';
 
 export function BestSellers() {
   const { addItem } = useCartStore();
+  const { items: wishlistItems, addItem: addWishlistItem, removeItem: removeWishlistItem } = useWishlistStore();
   return (
     <section className="py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-6">
@@ -27,23 +30,53 @@ export function BestSellers() {
           </a>
         </div>
         
-        <div className="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar">
-          {products.map((product, i) => (
+        <motion.div 
+          className="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+          }}
+        >
+          {products.map((product) => {
+            const inWishlist = wishlistItems.some(item => item.id === product.id);
+            return (
             <motion.div 
               key={product.id}
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.6 }}
+              variants={{
+                hidden: { opacity: 0, x: 50 },
+                visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } }
+              }}
               className="min-w-[280px] md:min-w-[320px] snap-start"
             >
-              <div className="flex flex-col h-full group bg-transparent">
+              <div className="flex flex-col h-full group bg-transparent hover:bg-white hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.15)] rounded-2xl p-4 hover:-translate-y-2 transition-all duration-500">
                 <Link href={`/product/${product.slug}`} className="block relative aspect-[4/5] bg-beige/10 rounded-2xl overflow-hidden mb-6">
                   <button 
-                    onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
-                    className="absolute top-4 right-4 z-20 text-primary-brown hover:text-accent-brown transition-colors bg-white/50 p-2 rounded-full backdrop-blur-sm"
+                    onClick={(e) => { 
+                      e.preventDefault(); 
+                      e.stopPropagation();
+                      if (inWishlist) {
+                        removeWishlistItem(product.id);
+                      } else {
+                        addWishlistItem({
+                          id: product.id,
+                          name: product.name,
+                          price: product.price,
+                          image: product.image,
+                          slug: product.slug
+                        });
+                      }
+                    }}
+                    className={cn(
+                      "absolute top-4 right-4 z-20 transition-all p-2 rounded-full backdrop-blur-sm hover:scale-110 active:scale-95",
+                      inWishlist
+                        ? "bg-dark-brown-red text-white"
+                        : "text-primary-brown bg-white/80 hover:bg-dark-brown-red hover:text-white"
+                    )}
                   >
-                    <Heart className="w-4 h-4" />
+                    <Heart className={cn("w-4 h-4", inWishlist && "fill-current")} />
                   </button>
                   <img src={product.image} alt={product.name} className="w-full h-full object-contain p-8 group-hover:scale-105 transition-transform duration-700" />
                   
@@ -80,7 +113,7 @@ export function BestSellers() {
                           image: product.image
                         });
                       }}
-                      className="w-full text-xs py-2 h-auto uppercase tracking-widest bg-dark-brown-red hover:bg-primary-brown text-white transition-colors shadow-none"
+                      className="w-full text-xs py-2 h-auto uppercase tracking-widest bg-dark-brown-red hover:bg-[#522929] text-white transition-all hover:scale-[1.02] active:scale-95 shadow-none"
                     >
                       Add to Cart
                     </Button>
@@ -88,8 +121,8 @@ export function BestSellers() {
                 </div>
               </div>
             </motion.div>
-          ))}
-        </div>
+          )})}
+        </motion.div>
       </div>
     </section>
   );

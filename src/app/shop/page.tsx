@@ -6,10 +6,13 @@ import { Heart, Star, Eye } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { useCartStore } from '@/store/useCartStore';
+import { useWishlistStore } from '@/store/useWishlistStore';
 import { products as fallbackProducts, Product } from '@/lib/products';
+import { cn } from '@/components/ui/Button';
 
 export default function ShopPage() {
   const { addItem } = useCartStore();
+  const { items: wishlistItems, addItem: addWishlistItem, removeItem: removeWishlistItem } = useWishlistStore();
   const [productsList, setProductsList] = useState<Product[]>(fallbackProducts);
   const [loading, setLoading] = useState(true);
 
@@ -139,10 +142,30 @@ export default function ShopPage() {
                       Add to Cart
                     </Button>
                     <button 
-                      onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
-                      className="w-full sm:w-12 h-12 flex items-center justify-center rounded-full sm:rounded-full border border-primary-brown/20 text-primary-brown hover:bg-cream transition-colors"
+                      onClick={(e) => { 
+                        e.preventDefault(); 
+                        e.stopPropagation();
+                        const inWishlist = wishlistItems.some(item => item.id === product.id);
+                        if (inWishlist) {
+                          removeWishlistItem(product.id);
+                        } else {
+                          addWishlistItem({
+                            id: product.id,
+                            name: product.name,
+                            price: product.price,
+                            image: product.image,
+                            slug: product.slug
+                          });
+                        }
+                      }}
+                      className={cn(
+                        "w-full sm:w-12 h-12 flex items-center justify-center rounded-full sm:rounded-full border transition-all hover:scale-110 active:scale-95",
+                        wishlistItems.some(item => item.id === product.id)
+                          ? "bg-dark-brown-red text-white border-dark-brown-red"
+                          : "border-primary-brown/20 text-primary-brown hover:bg-dark-brown-red hover:text-white hover:border-dark-brown-red"
+                      )}
                     >
-                      <Heart className="w-4 h-4" />
+                      <Heart className={cn("w-4 h-4", wishlistItems.some(item => item.id === product.id) && "fill-current")} />
                     </button>
                   </div>
                 </div>

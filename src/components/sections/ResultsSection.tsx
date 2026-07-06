@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { BeforeAfterSlider } from '../ui/BeforeAfterSlider';
+
 import { Button } from '../ui/Button';
 
 export function ResultsSection() {
@@ -16,7 +16,6 @@ export function ResultsSection() {
             transition={{ duration: 1 }}
             className="flex justify-center"
           >
-            {/* Decreased max width to max-w-sm, removed forced aspect ratio, changed to object-contain */}
             <div className="relative w-full max-w-sm mx-auto rounded-2xl overflow-hidden shadow-md bg-gray-50 flex items-center justify-center p-4">
               <motion.img 
                 src="/images/clinical-results.jpg" 
