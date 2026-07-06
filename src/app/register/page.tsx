@@ -31,7 +31,7 @@ export default function RegisterPage() {
 
       const data = await res.json();
 
-      if (data.success) {
+      if (res.ok) {
         setAuth(data.token, data.user);
         router.push('/profile');
       } else {

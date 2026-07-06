@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { DollarSign, ShoppingBag, Users, TrendingUp } from 'lucide-react';
 import { Card } from '@/components/ui/Card';
+import { useAuthStore } from '@/store/useAuthStore';
 
 export default function AdminDashboard() {
   const [stats, setStats] = useState({
@@ -11,6 +12,7 @@ export default function AdminDashboard() {
     totalCustomers: 0
   });
 
+  const { token } = useAuthStore();
   const [recentOrders, setRecentOrders] = useState([]);
 
   useEffect(() => {
@@ -18,31 +20,36 @@ export default function AdminDashboard() {
     // For now, we will fetch orders directly to calculate stats
     const fetchStats = async () => {
       try {
-        const res = await fetch('/api/orders');
-        const data = await res.json();
+        const res = await fetch('/api/orders', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
         
-        if (data.success && data.data) {
-          const orders = data.data;
-          
-          const totalRev = orders.reduce((acc: number, order: any) => acc + order.totalPrice, 0);
-          
-          setStats({
-            totalRevenue: `₹${totalRev.toFixed(2)}`,
-            totalOrders: orders.length,
-            totalCustomers: new Set(orders.map((o: any) => o.user)).size // unique users
-          });
+        if (!res.ok) return;
 
-          // Sort and get top 5
-          const sorted = orders.sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-          setRecentOrders(sorted.slice(0, 5));
-        }
+        const orders = await res.json();
+        
+        const totalRev = orders.reduce((acc: number, order: any) => acc + (order.totalPrice || order.totalAmount || 0), 0);
+        
+        setStats({
+          totalRevenue: `₹${totalRev.toFixed(2)}`,
+          totalOrders: orders.length,
+          totalCustomers: new Set(orders.map((o: any) => o.user)).size // unique users
+        });
+
+        // Sort and get top 5
+        const sorted = orders.sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+        setRecentOrders(sorted.slice(0, 5));
       } catch (error) {
         console.error("Failed to fetch admin stats", error);
       }
     };
     
-    fetchStats();
-  }, []);
+    if (token) {
+      fetchStats();
+    }
+  }, [token]);
 
   return (
     <div className="space-y-6">

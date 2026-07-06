@@ -30,11 +30,11 @@ export default function LoginPage() {
 
       const data = await res.json();
 
-      if (data.success) {
-        setAuth(data.token, data.data);
+      if (res.ok) {
+        setAuth(data.token, data.user);
         
         // Redirect based on role
-        if (data.data.role === 'admin') {
+        if (data.user.role === 'admin') {
           router.push('/admin');
         } else {
           router.push('/profile');

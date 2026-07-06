@@ -71,7 +71,7 @@ export default function CheckoutPage() {
 
       const data = await res.json();
 
-      if (data.success) {
+      if (res.ok) {
         clearCart();
         router.push('/profile'); // Redirect to profile to see the order
       } else {
