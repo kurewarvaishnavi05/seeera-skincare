@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 import { X, Minus, Plus, ShoppingBag } from 'lucide-react';
 import { useCartStore } from '@/store/useCartStore';
 import { Button } from './Button';
@@ -8,6 +9,7 @@ import { Button } from './Button';
 const FREE_SHIPPING_THRESHOLD = 2000;
 
 export function CartDrawer() {
+  const router = useRouter();
   const { isOpen, closeCart, items, updateQuantity, removeItem } = useCartStore();
 
   const subtotal = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
@@ -115,7 +117,16 @@ export function CartDrawer() {
                   <span className="text-dark-brown text-lg font-heading">Subtotal</span>
                   <span className="text-xl font-bold text-primary-brown font-heading">₹{subtotal}</span>
                 </div>
-                <Button className="w-full py-4 text-lg" size="lg">Checkout</Button>
+                <Button 
+                  onClick={() => {
+                    closeCart();
+                    router.push('/checkout');
+                  }}
+                  className="w-full py-4 text-lg" 
+                  size="lg"
+                >
+                  Checkout
+                </Button>
                 <p className="text-center text-xs text-dark-brown mt-4 tracking-widest uppercase">
                   Shipping & taxes calculated at checkout
                 </p>

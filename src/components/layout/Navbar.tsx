@@ -6,12 +6,14 @@ import { ShoppingBag, Search, Menu, Heart, X } from 'lucide-react';
 import { useScroll, useMotionValueEvent, motion, AnimatePresence } from 'framer-motion';
 import { cn } from '../ui/Button';
 import { useCartStore } from '@/store/useCartStore';
+import { useAuthStore } from '@/store/useAuthStore';
 
 export function Navbar() {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { openCart, items } = useCartStore();
+  const { user } = useAuthStore();
   
   const itemCount = items.reduce((acc, item) => acc + item.quantity, 0);
 
@@ -34,6 +36,7 @@ export function Navbar() {
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <button 
+            type="button"
             className={cn("lg:hidden hover:text-accent-brown transition-colors", textColorClass)}
             onClick={() => setIsMobileMenuOpen(true)}
           >
@@ -51,13 +54,16 @@ export function Navbar() {
         </Link>
 
         <div className={cn("flex items-center justify-end space-x-6", textColorClass)}>
-          <button className="hover:text-accent-brown transition-colors hidden sm:block">
+          <Link href={user ? "/profile" : "/login"} className="hover:text-accent-brown transition-colors hidden sm:block text-sm font-medium tracking-wider uppercase">
+            {user ? "Profile" : "Login"}
+          </Link>
+          <button type="button" className="hover:text-accent-brown transition-colors">
             <Search className="w-5 h-5" />
           </button>
-          <button className="hover:text-accent-brown transition-colors relative hidden sm:block">
+          <button type="button" className="hover:text-accent-brown transition-colors relative">
             <Heart className="w-5 h-5" />
           </button>
-          <button onClick={openCart} className="hover:text-accent-brown transition-colors relative">
+          <button type="button" onClick={openCart} className="hover:text-accent-brown transition-colors relative">
             <ShoppingBag className="w-5 h-5" />
             {itemCount > 0 && (
               <span className="absolute -top-2 -right-2 bg-accent-brown text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full">
@@ -88,12 +94,13 @@ export function Navbar() {
               <Link href="/reviews" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-accent-brown transition-colors">Reviews</Link>
               <Link href="/faq" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-accent-brown transition-colors">FAQ</Link>
               <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-accent-brown transition-colors">Blog</Link>
-              <Link href="/orders" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-accent-brown transition-colors">Orders</Link>
-              <Link href="/profile" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-accent-brown transition-colors">Profile</Link>
+              <Link href={user ? "/profile" : "/login"} onClick={() => setIsMobileMenuOpen(false)} className="hover:text-accent-brown transition-colors">
+                {user ? "Profile" : "Login"}
+              </Link>
             </nav>
             <div className="flex space-x-8 mt-12 text-primary-brown">
-              <button className="hover:text-accent-brown transition-colors"><Search className="w-6 h-6" /></button>
-              <button className="hover:text-accent-brown transition-colors"><Heart className="w-6 h-6" /></button>
+              <button type="button" className="hover:text-accent-brown transition-colors"><Search className="w-6 h-6" /></button>
+              <button type="button" className="hover:text-accent-brown transition-colors"><Heart className="w-6 h-6" /></button>
             </div>
           </motion.div>
         )}

@@ -5,13 +5,16 @@ import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { motion } from 'framer-motion';
 
+import Link from 'next/link';
+
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
+  href?: string;
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -49,6 +52,24 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       md: "px-8 py-3 text-base",
       lg: "px-10 py-4 text-lg",
     };
+
+    if (props.href) {
+      const { href, ...rest } = props as any;
+      return (
+        <Link href={href} passHref legacyBehavior>
+          <motion.a
+            className={cn(baseStyles, variants[variant], sizes[size], className)}
+            onMouseMove={handleMouse as any}
+            onMouseLeave={reset}
+            animate={{ x: position.x, y: position.y }}
+            transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
+            {...rest}
+          >
+            <span className="relative z-10 pointer-events-none flex items-center justify-center">{children}</span>
+          </motion.a>
+        </Link>
+      );
+    }
 
     return (
       <motion.button

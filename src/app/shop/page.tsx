@@ -1,41 +1,72 @@
 "use client";
 
-import { Heart, Star, Eye, ShoppingCart } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Card } from '../ui/Card';
-import { Button } from '../ui/Button';
-import { useCartStore } from '@/store/useCartStore';
-import { products } from '@/lib/products';
+import { Heart, Star, Eye } from 'lucide-react';
 import Link from 'next/link';
-import { cn } from '../ui/Button';
+import { Button } from '@/components/ui/Button';
+import { useCartStore } from '@/store/useCartStore';
+import { products as fallbackProducts, Product } from '@/lib/products';
 
-export function FeaturedProducts() {
+export default function ShopPage() {
   const { addItem } = useCartStore();
-  const featuredProducts = products.slice(0, 3);
-  
+  const [productsList, setProductsList] = useState<Product[]>(fallbackProducts);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Attempt to fetch from MongoDB API
+    const fetchProducts = async () => {
+      try {
+        const res = await fetch('/api/products');
+        const data = await res.json();
+        if (data.success && data.data && data.data.length > 0) {
+          // Map MongoDB format to frontend Product format if necessary
+          const formattedData = data.data.map((p: any) => ({
+            id: p._id,
+            slug: p.name.toLowerCase().replace(/ /g, '-'),
+            name: p.name,
+            price: p.price,
+            formattedPrice: `₹${p.price.toFixed(2)}`,
+            category: p.category,
+            image: p.image || 'https://cdn.shopify.com/s/files/1/0935/2131/4156/files/1.png',
+            description: p.description,
+            badges: p.stock < 10 ? ['Low Stock'] : [],
+            tags: [p.category]
+          }));
+          setProductsList(formattedData);
+        }
+      } catch (error) {
+        console.error("Failed to fetch products from DB, using fallback", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
   return (
-    <section className="py-32 bg-[#F8F5F2]">
+    <main className="pt-32 pb-24 min-h-screen bg-[#F8F5F2]">
       <div className="container mx-auto px-6 max-w-7xl">
-        <div className="text-center mb-20">
-          <motion.h2 
+        <div className="text-center mb-16">
+          <motion.h1 
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-heading text-primary-brown mb-6"
+            animate={{ opacity: 1, y: 0 }}
+            className="text-4xl md:text-5xl font-heading text-primary-brown mb-4"
           >
-            Our Best Sellers
-          </motion.h2>
-          <p className="text-dark-brown font-light text-lg">Science-backed skincare designed for every skin shade.</p>
+            Shop All
+          </motion.h1>
+          <p className="text-dark-brown font-light text-lg">Discover our full range of science-backed skincare.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-          {featuredProducts.map((product, index) => (
+        {/* Responsive Grid exactly as requested: 1 col mobile, 2 col tablet, 4 col desktop */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {productsList.map((product, index) => (
             <motion.div
               key={product.id}
               initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.15, duration: 0.8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1, duration: 0.8 }}
             >
               <div className="flex flex-col h-full group bg-white rounded-[20px] p-4 lg:p-6 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500">
                 <Link href={`/product/${product.slug}`} className="block relative aspect-square bg-cream/30 rounded-2xl overflow-hidden mb-8">
@@ -88,7 +119,7 @@ export function FeaturedProducts() {
                     </div>
                   </div>
                   
-                  <p className="text-xs text-dark-brown/70 font-light mb-6">1000+ Sold • Customer Favorite</p>
+                  <p className="text-xs text-dark-brown/70 font-light mb-6">High Quality • Customer Favorite</p>
                   
                   {/* Actions */}
                   <div className="flex flex-col sm:flex-row items-center gap-3 mt-auto pt-4 border-t border-primary-brown/10">
@@ -119,13 +150,7 @@ export function FeaturedProducts() {
             </motion.div>
           ))}
         </div>
-        
-        <div className="text-center mt-20">
-          <Button variant="outline" className="px-10 py-4 h-auto text-sm tracking-widest uppercase border-primary-brown/30 hover:bg-primary-brown hover:text-white transition-all duration-300">
-            Explore All Products &rarr;
-          </Button>
-        </div>
       </div>
-    </section>
+    </main>
   );
 }

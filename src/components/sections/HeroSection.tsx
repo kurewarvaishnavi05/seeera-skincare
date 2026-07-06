@@ -31,10 +31,23 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex w-full px-4 flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <Button size="lg" className="bg-dark-brown-red hover:bg-primary-brown text-white border-dark-brown-red">Shop Now</Button>
-          <Button variant="outline" size="lg">Learn More</Button>
+          <Button 
+            size="lg" 
+            className="w-full sm:w-auto bg-dark-brown-red hover:bg-primary-brown text-white border-dark-brown-red"
+            href="/shop"
+          >
+            Shop Now
+          </Button>
+          <Button 
+            variant="outline" 
+            size="lg" 
+            className="w-full sm:w-auto"
+            href="/about"
+          >
+            Learn More
+          </Button>
         </motion.div>
       </div>
     </section>
