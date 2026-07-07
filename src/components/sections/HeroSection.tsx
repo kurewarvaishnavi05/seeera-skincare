@@ -33,7 +33,7 @@ export function HeroSection() {
     <section className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-black">
       
       {/* Background Image with Parallax */}
-      <motion.div style={{ y }} className="absolute inset-0 z-0">
+      <motion.div style={{ y }} className="absolute inset-0 z-0 scale-105">
         <Image 
           src="/images/hero-woman.jpg" 
           alt="Seeera Skincare Model" 
@@ -41,7 +41,7 @@ export function HeroSection() {
           priority
           unoptimized
           quality={100}
-          className="object-contain"
+          className="object-cover object-[60%_30%] md:object-center opacity-90"
         />
       </motion.div>
 
