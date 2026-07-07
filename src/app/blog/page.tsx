@@ -92,7 +92,7 @@ export default function BlogPage() {
                   <span className="text-xs text-accent-brown uppercase tracking-widest mb-3 font-medium">{post.date}</span>
                   <h3 className="text-2xl font-heading text-primary-brown mb-3 group-hover:text-dark-brown-red transition-colors leading-tight">{post.title}</h3>
                   <p className="text-dark-brown font-light line-clamp-2 mb-6 flex-1 text-sm">{post.excerpt}</p>
-                  <div className="mt-auto inline-flex items-center justify-center w-full sm:w-auto px-6 py-3 border border-dark-brown-red text-xs sm:text-sm text-dark-brown-red uppercase tracking-widest font-medium rounded-full group-hover:bg-dark-brown-red group-hover:text-white transition-colors duration-300">
+                  <div className="mt-auto inline-flex items-center gap-2 text-sm text-dark-brown-red font-medium group-hover:underline underline-offset-4 decoration-1">
                     Read Article
                   </div>
                 </div>
