@@ -35,16 +35,13 @@ export async function GET(req: Request) {
 export async function POST(req: Request) {
   try {
     const user = await getUserFromToken();
-    if (!user) {
-      return NextResponse.json({ message: 'Please login to place an order' }, { status: 401 });
-    }
 
     await dbConnect();
     const data = await req.json();
     
     const order = await Order.create({
       ...data,
-      user: user.id,
+      user: user ? user.id : undefined,
     });
 
     return NextResponse.json(order, { status: 201 });

@@ -2,9 +2,10 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { LayoutDashboard, Package, ShoppingCart, Users, Settings, LogOut, Menu, X } from 'lucide-react';
 import { cn } from '@/components/ui/Button';
+import { useAuthStore } from '@/store/useAuthStore';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -17,6 +18,19 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     { name: 'Customers', href: '/admin/customers', icon: Users },
     { name: 'Settings', href: '/admin/settings', icon: Settings },
   ];
+
+  const { user, token, logout } = useAuthStore();
+  const router = useRouter();
+  
+  useEffect(() => {
+    if (!token || user?.role !== 'admin') {
+      router.push('/login');
+    }
+  }, [user, token, router]);
+
+  if (!token || user?.role !== 'admin') {
+    return null; // prevent flash
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 flex">
@@ -66,7 +80,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </nav>
 
         <div className="p-4 border-t border-gray-200">
-          <button className="flex items-center w-full px-4 py-3 text-sm font-medium text-gray-600 rounded-xl hover:bg-gray-50 hover:text-red-600 transition-colors">
+          <button 
+            onClick={() => { logout(); router.push('/login'); }} 
+            className="flex items-center w-full px-4 py-3 text-sm font-medium text-gray-600 rounded-xl hover:bg-gray-50 hover:text-red-600 transition-colors"
+          >
             <LogOut className="mr-3 h-5 w-5 text-gray-400" />
             Logout
           </button>
