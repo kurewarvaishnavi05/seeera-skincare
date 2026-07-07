@@ -37,27 +37,31 @@ export default function CheckoutPage() {
 
     try {
       // Simulate "Cash on Delivery" or bypass payment gateway by directly creating the order
+      // Split the full name for the schema
+      const nameParts = shipping.name.trim().split(' ');
+      const firstName = nameParts[0] || 'Unknown';
+      const lastName = nameParts.length > 1 ? nameParts.slice(1).join(' ') : 'Unknown';
+
       const orderData = {
-        products: items.map(item => ({ 
+        items: items.map(item => ({ 
           product: String(item.id).length === 24 ? item.id : "64c23565e3146b9a84abf532", 
+          name: item.name,
           quantity: item.quantity,
-          price: item.price
+          price: item.price,
+          image: item.image
         })),
+        totalAmount: total,
         shippingAddress: {
+          firstName: firstName,
+          lastName: lastName,
           address: shipping.street,
           city: shipping.city,
           postalCode: shipping.zip,
           country: shipping.state || "India",
           phone: shipping.phone
         },
-        paymentInfo: {
-          id: 'simulated_txn_' + Math.random().toString(36).substr(2, 9),
-          status: 'Cash on Delivery'
-        },
-        itemsPrice: total,
-        taxPrice: 0,
-        shippingPrice: 0,
-        totalPrice: total
+        paymentMethod: 'Cash on Delivery',
+        paymentStatus: 'Pending',
       };
 
       const res = await fetch('/api/orders', {
