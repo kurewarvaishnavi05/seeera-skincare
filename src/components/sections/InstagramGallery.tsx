@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { Button } from '../ui/Button';
 
 const posts = [
   { id: 1, image: "/images/community-1.jpg" },
@@ -10,18 +12,89 @@ const posts = [
 ];
 
 export function InstagramGallery() {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [message, setMessage] = useState('');
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+
+    setStatus('loading');
+    setMessage('');
+
+    try {
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+      const data = await res.json();
+
+      if (res.ok) {
+        setStatus('success');
+        setMessage(data.message || 'Successfully subscribed!');
+        setEmail('');
+      } else {
+        setStatus('error');
+        setMessage(data.message || 'An error occurred.');
+      }
+    } catch (error) {
+      setStatus('error');
+      setMessage('Something went wrong. Please try again.');
+    }
+  };
+
   return (
     <section className="py-24 bg-white">
       <div className="container mx-auto px-6 max-w-7xl">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 max-w-2xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-heading text-dark-brown-red mb-4">
             Join the Community
           </h2>
-          <a href="#" className="text-sm tracking-widest uppercase text-accent-brown hover:text-dark-brown-red transition-colors">
+          <a href="#" className="text-sm tracking-widest uppercase text-accent-brown hover:text-dark-brown-red transition-colors block mb-8">
             @seeeraskincare
           </a>
+
+          {/* Newsletter Form */}
+          <motion.form 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            onSubmit={handleSubscribe}
+            className="flex flex-col sm:flex-row gap-3 justify-center w-full max-w-md mx-auto"
+          >
+            <input 
+              type="email" 
+              placeholder="Enter your email address" 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              disabled={status === 'loading'}
+              required
+              className="w-full sm:w-auto flex-1 bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent-brown/30 focus:border-accent-brown transition-all disabled:opacity-50"
+            />
+            <Button 
+              type="submit" 
+              disabled={status === 'loading'}
+              className="w-full sm:w-auto shrink-0"
+            >
+              {status === 'loading' ? 'Joining...' : 'Subscribe'}
+            </Button>
+          </motion.form>
+          
+          {/* Status Message */}
+          {message && (
+            <motion.p 
+              initial={{ opacity: 0, y: 5 }}
+              animate={{ opacity: 1, y: 0 }}
+              className={`mt-4 text-sm font-medium ${status === 'success' ? 'text-green-600' : 'text-red-500'}`}
+            >
+              {message}
+            </motion.p>
+          )}
         </div>
         
+        {/* Instagram Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {posts.map((post, i) => (
             <motion.div 

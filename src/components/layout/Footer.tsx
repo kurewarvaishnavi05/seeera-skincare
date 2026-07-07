@@ -1,7 +1,8 @@
 "use client";
 
 import Link from 'next/link';
-import { Mail, ChevronUp } from 'lucide-react';
+import { Mail, ChevronUp, Check, X } from 'lucide-react';
+import { useState } from 'react';
 
 const FacebookIcon = ({ className }: { className?: string }) => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -28,6 +29,39 @@ const YoutubeIcon = ({ className }: { className?: string }) => (
 );
 
 export function Footer() {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [message, setMessage] = useState('');
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+
+    setStatus('loading');
+    setMessage('');
+
+    try {
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+      const data = await res.json();
+
+      if (res.ok) {
+        setStatus('success');
+        setMessage('Successfully subscribed!');
+        setEmail('');
+      } else {
+        setStatus('error');
+        setMessage(data.message || 'An error occurred.');
+      }
+    } catch (error) {
+      setStatus('error');
+      setMessage('Something went wrong.');
+    }
+  };
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -84,19 +118,38 @@ export function Footer() {
           <div className="lg:col-span-1">
             <h3 className="text-sm font-bold text-white tracking-widest uppercase mb-8">Newsletter</h3>
             
-            <form className="relative flex items-center mb-8" onSubmit={(e) => e.preventDefault()}>
-              <input 
-                type="email" 
-                placeholder="Enter your email..." 
-                required
-                className="w-full h-12 pl-4 pr-12 text-sm text-primary-brown bg-cream placeholder:text-primary-brown/50 focus:outline-none"
-              />
-              <button 
-                type="submit"
-                className="absolute right-0 top-0 bottom-0 w-12 flex items-center justify-center bg-primary-brown hover:bg-black text-cream transition-colors"
-              >
-                <Mail className="w-5 h-5" />
-              </button>
+            <form className="relative flex flex-col mb-8" onSubmit={handleSubscribe}>
+              <div className="relative flex items-center">
+                <input 
+                  type="email" 
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={status === 'loading'}
+                  placeholder="Enter your email..." 
+                  required
+                  className="w-full h-12 pl-4 pr-12 text-sm text-primary-brown bg-cream placeholder:text-primary-brown/50 focus:outline-none disabled:opacity-70"
+                />
+                <button 
+                  type="submit"
+                  disabled={status === 'loading'}
+                  className="absolute right-0 top-0 bottom-0 w-12 flex items-center justify-center bg-primary-brown hover:bg-black text-cream transition-colors disabled:opacity-70"
+                >
+                  {status === 'loading' ? (
+                    <div className="w-4 h-4 border-2 border-cream border-t-transparent rounded-full animate-spin" />
+                  ) : status === 'success' ? (
+                    <Check className="w-5 h-5 text-green-400" />
+                  ) : status === 'error' ? (
+                    <X className="w-5 h-5 text-red-400" />
+                  ) : (
+                    <Mail className="w-5 h-5" />
+                  )}
+                </button>
+              </div>
+              {message && (
+                <span className={`mt-2 text-xs font-medium ${status === 'success' ? 'text-green-400' : 'text-red-400'}`}>
+                  {message}
+                </span>
+              )}
             </form>
             
             <div className="flex space-x-4">
