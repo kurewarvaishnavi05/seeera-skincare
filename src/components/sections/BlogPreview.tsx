@@ -32,25 +32,25 @@ export function BlogPreview() {
   return (
     <section className="py-24 bg-white">
       <div className="container mx-auto px-6 max-w-7xl">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10 md:mb-16 gap-4 sm:gap-6">
           <div>
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-heading text-dark-brown-red mb-4"
+              className="text-3xl md:text-4xl lg:text-5xl font-heading text-dark-brown-red mb-2 md:mb-4"
             >
               The Seeera Journal
             </motion.h2>
-            <p className="text-dark-brown font-light text-lg">Skincare education, tips, and science.</p>
+            <p className="text-dark-brown font-light text-base md:text-lg">Skincare education, tips, and science.</p>
           </div>
-          <Link href="/blog" className="text-sm tracking-widest uppercase text-accent-brown hover:text-dark-brown-red transition-colors flex items-center gap-2 group">
+          <Link href="/blog" className="text-xs md:text-sm tracking-widest uppercase text-accent-brown hover:text-dark-brown-red transition-colors flex items-center gap-2 group">
             View All Posts
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
           {blogPosts.map((post, index) => (
             <motion.div
               key={post.id}
