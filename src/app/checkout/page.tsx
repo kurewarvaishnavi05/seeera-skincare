@@ -126,6 +126,7 @@ export default function CheckoutPage() {
                     <input 
                       required
                       type="text" 
+                      autoComplete="name"
                       value={shipping.name}
                       onChange={(e) => setShipping({...shipping, name: e.target.value})}
                       className="w-full px-4 py-3 bg-cream/30 border border-primary-brown/20 rounded-lg text-sm focus:outline-none focus:border-primary-brown focus:bg-white"
@@ -136,6 +137,7 @@ export default function CheckoutPage() {
                     <input 
                       required
                       type="tel" 
+                      autoComplete="tel"
                       value={shipping.phone}
                       onChange={(e) => setShipping({...shipping, phone: e.target.value})}
                       className="w-full px-4 py-3 bg-cream/30 border border-primary-brown/20 rounded-lg text-sm focus:outline-none focus:border-primary-brown focus:bg-white"
@@ -146,6 +148,7 @@ export default function CheckoutPage() {
                     <input 
                       required
                       type="text" 
+                      autoComplete="street-address"
                       value={shipping.street}
                       onChange={(e) => setShipping({...shipping, street: e.target.value})}
                       className="w-full px-4 py-3 bg-cream/30 border border-primary-brown/20 rounded-lg text-sm focus:outline-none focus:border-primary-brown focus:bg-white"
@@ -156,6 +159,7 @@ export default function CheckoutPage() {
                     <input 
                       required
                       type="text" 
+                      autoComplete="address-level2"
                       value={shipping.city}
                       onChange={(e) => setShipping({...shipping, city: e.target.value})}
                       className="w-full px-4 py-3 bg-cream/30 border border-primary-brown/20 rounded-lg text-sm focus:outline-none focus:border-primary-brown focus:bg-white"
@@ -167,6 +171,7 @@ export default function CheckoutPage() {
                       <input 
                         required
                         type="text" 
+                        autoComplete="address-level1"
                         value={shipping.state}
                         onChange={(e) => setShipping({...shipping, state: e.target.value})}
                         className="w-full px-4 py-3 bg-cream/30 border border-primary-brown/20 rounded-lg text-sm focus:outline-none focus:border-primary-brown focus:bg-white"
@@ -177,6 +182,8 @@ export default function CheckoutPage() {
                       <input 
                         required
                         type="text" 
+                        autoComplete="postal-code"
+                        inputMode="numeric"
                         value={shipping.zip}
                         onChange={(e) => setShipping({...shipping, zip: e.target.value})}
                         className="w-full px-4 py-3 bg-cream/30 border border-primary-brown/20 rounded-lg text-sm focus:outline-none focus:border-primary-brown focus:bg-white"

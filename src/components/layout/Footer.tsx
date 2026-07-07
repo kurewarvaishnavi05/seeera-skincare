@@ -33,7 +33,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-dark-brown-red text-cream py-16 relative">
+    <footer className="bg-dark-brown-red text-cream py-10 md:py-16 relative">
       <div className="container mx-auto px-6 max-w-[1400px]">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-16">
           
