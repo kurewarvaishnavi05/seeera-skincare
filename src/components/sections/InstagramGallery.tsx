@@ -52,7 +52,7 @@ export function InstagramGallery() {
           <h2 className="text-4xl md:text-5xl font-heading text-dark-brown-red mb-4">
             Join the Community
           </h2>
-          <a href="#" className="text-sm tracking-widest uppercase text-accent-brown hover:text-dark-brown-red transition-colors block mb-8">
+          <a href="https://www.instagram.com/seeeraskincare/" target="_blank" rel="noopener noreferrer" className="text-sm tracking-widest uppercase text-accent-brown hover:text-dark-brown-red transition-colors block mb-8">
             @seeeraskincare
           </a>
 
@@ -110,9 +110,9 @@ export function InstagramGallery() {
                 alt="Community Post" 
                 className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105" 
               />
-              <div className="absolute inset-0 bg-primary-brown/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <a href="https://www.instagram.com/seeeraskincare/" target="_blank" rel="noopener noreferrer" className="absolute inset-0 bg-primary-brown/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                 <span className="text-white font-medium tracking-widest uppercase text-sm">View Post</span>
-              </div>
+              </a>
             </motion.div>
           ))}
         </div>
