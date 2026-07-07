@@ -58,7 +58,7 @@ export function ResultsSection() {
                 100% felt their skin was deeply hydrated
               </li>
             </ul>
-            <Button size="lg" className="bg-dark-brown-red hover:bg-[#522929] text-white border-none">Shop The Routine</Button>
+            <Button href="/shop" size="lg" className="w-full sm:w-auto bg-dark-brown-red hover:bg-[#522929] text-white border-none">Shop The Routine</Button>
           </motion.div>
         </div>
       </div>

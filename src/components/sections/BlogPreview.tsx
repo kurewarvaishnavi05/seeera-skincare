@@ -58,24 +58,26 @@ export function BlogPreview() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.6 }}
-              className="group cursor-pointer flex flex-col h-full"
+              className="h-full"
             >
-              <div className="aspect-[4/3] rounded-[20px] overflow-hidden mb-6 relative bg-gray-50 flex items-center justify-center">
-                <div className="absolute inset-0 bg-primary-brown/20 z-10 group-hover:bg-transparent transition-colors duration-500"></div>
-                <img 
-                  src={post.image} 
-                  alt={post.title} 
-                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-              <div className="flex flex-col flex-1">
-                <span className="text-xs text-accent-brown uppercase tracking-widest mb-3 font-medium">{post.date}</span>
-                <h3 className="text-2xl font-heading text-primary-brown mb-3 group-hover:text-dark-brown-red transition-colors">{post.title}</h3>
-                <p className="text-dark-brown font-light line-clamp-2 mb-6 flex-1">{post.excerpt}</p>
-                <div className="mt-auto inline-flex items-center gap-2 text-sm text-dark-brown-red font-medium group-hover:underline underline-offset-4 decoration-1">
-                  Read Article
+              <Link href="/blog" className="group cursor-pointer flex flex-col h-full">
+                <div className="aspect-[4/3] rounded-[20px] overflow-hidden mb-6 relative bg-gray-50 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-primary-brown/20 z-10 group-hover:bg-transparent transition-colors duration-500"></div>
+                  <img 
+                    src={post.image} 
+                    alt={post.title} 
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
+                  />
                 </div>
-              </div>
+                <div className="flex flex-col flex-1">
+                  <span className="text-xs text-accent-brown uppercase tracking-widest mb-3 font-medium">{post.date}</span>
+                  <h3 className="text-2xl font-heading text-primary-brown mb-3 group-hover:text-dark-brown-red transition-colors">{post.title}</h3>
+                  <p className="text-dark-brown font-light line-clamp-2 mb-6 flex-1">{post.excerpt}</p>
+                  <div className="mt-auto inline-flex items-center gap-2 text-sm text-dark-brown-red font-medium group-hover:underline underline-offset-4 decoration-1">
+                    Read Article
+                  </div>
+                </div>
+              </Link>
             </motion.div>
           ))}
         </div>
