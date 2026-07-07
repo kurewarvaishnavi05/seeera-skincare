@@ -125,7 +125,7 @@ export default function AdminDashboard() {
                     <td className="px-6 py-4 font-medium text-gray-900">#{order._id.substring(order._id.length - 6)}</td>
                     <td className="px-6 py-4 text-gray-500">{new Date(order.createdAt).toLocaleDateString()}</td>
                     <td className="px-6 py-4 text-gray-900">{order.user?.name || 'Guest'}</td>
-                    <td className="px-6 py-4 text-gray-900 font-medium">₹{order.totalPrice.toFixed(2)}</td>
+                    <td className="px-6 py-4 text-gray-900 font-medium">₹{(order.totalAmount || 0).toFixed(2)}</td>
                     <td className="px-6 py-4">
                       <span className={`px-3 py-1 rounded-full text-xs font-medium ${
                         order.orderStatus === 'Delivered' ? 'bg-green-100 text-green-700' : 

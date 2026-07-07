@@ -111,7 +111,7 @@ export default function ProfilePage() {
                         </div>
                         <div>
                           <p className="text-xs text-dark-brown/50 uppercase tracking-widest mb-1">Total</p>
-                          <p className="text-sm font-medium text-primary-brown">₹{order.totalPrice.toFixed(2)}</p>
+                          <p className="text-sm font-medium text-primary-brown">₹{(order.totalAmount || 0).toFixed(2)}</p>
                         </div>
                         <div>
                           <p className="text-xs text-dark-brown/50 uppercase tracking-widest mb-1">Order #</p>
@@ -123,7 +123,7 @@ export default function ProfilePage() {
                         <div>
                           <h3 className="font-medium text-primary-brown mb-1">Status: <span className="text-accent-brown">{order.orderStatus}</span></h3>
                           <p className="text-sm text-dark-brown/70 font-light">
-                            {order.products.length} {order.products.length === 1 ? 'item' : 'items'} in this order
+                            {order.items?.length || 0} {(order.items?.length || 0) === 1 ? 'item' : 'items'} in this order
                           </p>
                         </div>
                         <Button variant="outline" className="border-primary-brown/20 text-primary-brown hover:bg-cream text-xs tracking-widest uppercase h-10 px-6 rounded-full shadow-none">

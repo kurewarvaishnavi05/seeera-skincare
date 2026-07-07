@@ -80,8 +80,8 @@ export default function AdminOrders() {
                       <div>{order.shippingAddress?.name || 'Customer'}</div>
                       <div className="text-xs text-gray-500">{order.user?.email || 'N/A'}</div>
                     </td>
-                    <td className="px-6 py-4 text-gray-500">{order.products?.length || 0} items</td>
-                    <td className="px-6 py-4 text-gray-900 font-medium">₹{order.totalPrice.toFixed(2)}</td>
+                    <td className="px-6 py-4 text-gray-500">{order.items?.length || 0} items</td>
+                    <td className="px-6 py-4 text-gray-900 font-medium">₹{(order.totalAmount || 0).toFixed(2)}</td>
                     <td className="px-6 py-4">
                       <span className={`px-3 py-1 rounded-full text-xs font-medium ${
                         order.orderStatus === 'Delivered' ? 'bg-green-100 text-green-700' : 
