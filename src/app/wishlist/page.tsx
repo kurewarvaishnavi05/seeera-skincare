@@ -76,7 +76,7 @@ export default function WishlistPage() {
                   
                   <Button 
                     onClick={() => {
-                      addItem({ id: item.id, name: item.name, price: item.price, image: item.image, quantity: 1 });
+                      addItem({ id: item.id, name: item.name, price: Number(item.price), image: item.image });
                     }}
                     className="w-full bg-transparent border border-primary-brown text-primary-brown hover:bg-primary-brown hover:text-white transition-all flex items-center justify-center gap-2"
                   >

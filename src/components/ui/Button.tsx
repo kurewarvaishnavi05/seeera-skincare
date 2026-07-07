@@ -83,7 +83,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.97 }}
         transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
-        {...props}
+        {...(props as any)}
       >
         <span className="relative z-10 pointer-events-none flex items-center justify-center">{children}</span>
       </motion.button>
