@@ -33,7 +33,7 @@ export const products: Product[] = [
     category: "Lip Care",
     image: "https://cdn.shopify.com/s/files/1/0935/2131/4156/files/option_1_jpg.jpg?v=1771262475",
     description: "A deeply nourishing lip balm infused with CICA and PDRN to repair dry, chapped lips while providing a smooth, glossy finish and lasting hydration.",
-    badges: ["New", "Dermatologist Tested"],
+    badges: ["New"],
     tags: ["PDRN + CICA", "Hydrating"]
   },
   {

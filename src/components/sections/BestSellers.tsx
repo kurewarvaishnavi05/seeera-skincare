@@ -23,7 +23,7 @@ export function BestSellers() {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-heading text-primary-brown"
           >
-            Best Sellers
+            All Products
           </motion.h2>
           <a href="#" className="hidden md:block text-sm tracking-widest uppercase text-accent-brown hover:text-primary-brown transition-colors">
             Shop All
