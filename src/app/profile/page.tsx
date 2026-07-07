@@ -12,6 +12,7 @@ export default function ProfilePage() {
   const { user, token, logout } = useAuthStore();
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [expandedOrderId, setExpandedOrderId] = useState<string | null>(null);
 
   useEffect(() => {
     if (!user || !token) {
@@ -126,10 +127,51 @@ export default function ProfilePage() {
                             {order.items?.length || 0} {(order.items?.length || 0) === 1 ? 'item' : 'items'} in this order
                           </p>
                         </div>
-                        <Button variant="outline" className="border-primary-brown/20 text-primary-brown hover:bg-cream text-xs tracking-widest uppercase h-10 px-6 rounded-full shadow-none">
-                          View Details
+                        <Button 
+                          onClick={() => setExpandedOrderId(expandedOrderId === order._id ? null : order._id)}
+                          variant="outline" 
+                          className="border-primary-brown/20 text-primary-brown hover:bg-cream text-xs tracking-widest uppercase h-10 px-6 rounded-full shadow-none"
+                        >
+                          {expandedOrderId === order._id ? 'Hide Details' : 'View Details'}
                         </Button>
                       </div>
+
+                      {expandedOrderId === order._id && (
+                        <div className="mt-6 pt-6 border-t border-gray-100 animate-in slide-in-from-top-4 duration-300">
+                          <h4 className="text-sm font-medium text-primary-brown mb-4 uppercase tracking-widest">Items Included</h4>
+                          <div className="space-y-4">
+                            {order.items?.map((item: any, idx: number) => (
+                              <div key={idx} className="flex items-center gap-4 bg-gray-50/50 p-4 rounded-lg">
+                                <div className="w-12 h-12 bg-white rounded flex-shrink-0 p-1 border border-gray-100">
+                                  {item.image ? (
+                                    <img src={item.image} alt={item.name} className="w-full h-full object-contain" />
+                                  ) : (
+                                    <Package className="w-full h-full text-gray-300 p-2" />
+                                  )}
+                                </div>
+                                <div className="flex-1">
+                                  <p className="text-sm font-medium text-primary-brown">{item.name}</p>
+                                  <p className="text-xs text-dark-brown/70">Qty: {item.quantity}</p>
+                                </div>
+                                <div className="text-sm font-medium text-primary-brown">
+                                  ₹{(item.price * item.quantity).toFixed(2)}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                          
+                          <div className="mt-6">
+                            <h4 className="text-sm font-medium text-primary-brown mb-2 uppercase tracking-widest">Shipping Address</h4>
+                            <div className="bg-gray-50/50 p-4 rounded-lg text-sm text-dark-brown/80 font-light leading-relaxed">
+                              <p className="font-medium text-primary-brown mb-1">{order.shippingAddress?.firstName} {order.shippingAddress?.lastName}</p>
+                              <p>{order.shippingAddress?.address}</p>
+                              <p>{order.shippingAddress?.city}, {order.shippingAddress?.state} {order.shippingAddress?.postalCode}</p>
+                              <p>{order.shippingAddress?.country}</p>
+                              <p className="mt-2 text-xs">Phone: {order.shippingAddress?.phone}</p>
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>
