@@ -34,11 +34,11 @@ export default function BlogPost({ params }: { params: { id: string } }) {
             {post.excerpt}
           </p>
           
-          <div className="w-full aspect-[16/9] md:aspect-[21/9] rounded-[24px] overflow-hidden mb-12 md:mb-16 shadow-lg bg-gray-50 flex items-center justify-center">
+          <div className="w-full max-w-2xl mx-auto rounded-[24px] overflow-hidden mb-12 md:mb-16 bg-transparent flex items-center justify-center">
             <img 
               src={post.image} 
               alt={post.title} 
-              className="w-full h-full object-cover"
+              className="w-full max-h-[400px] object-contain rounded-[24px] shadow-sm"
             />
           </div>
           
