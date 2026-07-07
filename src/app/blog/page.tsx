@@ -27,30 +27,6 @@ const blogPosts = [
     date: "May 10, 2024",
     image: "/images/journal-3.jpg",
     category: "Guides",
-  },
-  {
-    id: 4,
-    title: "How to Build a Skincare Routine for Sensitive Skin",
-    excerpt: "Step-by-step guide on what to avoid and what to embrace if your skin is easily irritated.",
-    date: "June 22, 2024",
-    image: "/images/journal-1.jpg",
-    category: "Guides",
-  },
-  {
-    id: 5,
-    title: "The Magic of CICA (Centella Asiatica) Explained",
-    excerpt: "Why this ancient herb is the ultimate cure for redness and inflammation.",
-    date: "July 01, 2024",
-    image: "/images/journal-2.jpg",
-    category: "Ingredients",
-  },
-  {
-    id: 6,
-    title: "Sunscreen 101: Chemical vs Physical",
-    excerpt: "Everything you need to know about protecting your skin from UV damage.",
-    date: "July 15, 2024",
-    image: "/images/journal-3.jpg",
-    category: "Education",
   }
 ];
 
@@ -116,7 +92,7 @@ export default function BlogPage() {
                   <span className="text-xs text-accent-brown uppercase tracking-widest mb-3 font-medium">{post.date}</span>
                   <h3 className="text-2xl font-heading text-primary-brown mb-3 group-hover:text-dark-brown-red transition-colors leading-tight">{post.title}</h3>
                   <p className="text-dark-brown font-light line-clamp-2 mb-6 flex-1 text-sm">{post.excerpt}</p>
-                  <div className="mt-auto inline-flex items-center gap-2 text-sm text-dark-brown-red font-medium group-hover:underline underline-offset-4 decoration-1">
+                  <div className="mt-auto inline-flex items-center justify-center w-full sm:w-auto px-6 py-3 border border-dark-brown-red text-xs sm:text-sm text-dark-brown-red uppercase tracking-widest font-medium rounded-full group-hover:bg-dark-brown-red group-hover:text-white transition-colors duration-300">
                     Read Article
                   </div>
                 </div>
