@@ -152,8 +152,8 @@ export function FeaturedProducts() {
           )})}
         </motion.div>
         
-        <div className="text-center mt-20">
-          <Button variant="outline" className="px-10 py-4 h-auto text-sm tracking-widest uppercase border-primary-brown/30 hover:bg-primary-brown hover:text-white transition-all duration-300">
+        <div className="text-center mt-20 px-6 sm:px-0">
+          <Button href="/shop" variant="outline" className="w-full sm:w-auto px-10 py-4 h-auto text-sm tracking-widest uppercase border-primary-brown/30 hover:bg-primary-brown hover:text-white transition-all duration-300">
             Explore All Products &rarr;
           </Button>
         </div>
