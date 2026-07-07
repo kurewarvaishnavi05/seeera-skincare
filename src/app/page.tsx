@@ -8,7 +8,7 @@ import { AboutSection } from "@/components/sections/AboutSection";
 import { IngredientsSection } from "@/components/sections/IngredientsSection";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { BestSellers } from "@/components/sections/BestSellers";
-import { SpotlightSection } from "@/components/sections/SpotlightSection";
+
 import { ResultsSection } from "@/components/sections/ResultsSection";
 import { CustomerReviews } from "@/components/sections/CustomerReviews";
 import { InstagramGallery } from "@/components/sections/InstagramGallery";
@@ -32,7 +32,7 @@ export default function Home() {
       <ResultsSection />
       <IngredientsSection />
       <BestSellers />
-      <SpotlightSection />
+
       <CustomerReviews />
       <FAQSection />
       <InstagramGallery />
