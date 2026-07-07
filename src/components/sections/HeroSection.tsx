@@ -41,8 +41,10 @@ export function HeroSection() {
           priority
           unoptimized
           quality={100}
-          className="object-cover object-[60%_30%] md:object-center opacity-90"
+          className="object-cover object-[60%_30%] md:object-center"
         />
+        {/* Added a subtle gradient to make the text pop without blending the entire image */}
+        <div className="absolute inset-0 bg-gradient-to-t from-cream/40 via-transparent to-transparent pointer-events-none"></div>
       </motion.div>
 
 
