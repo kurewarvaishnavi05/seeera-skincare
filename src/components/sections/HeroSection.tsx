@@ -52,7 +52,7 @@ export function HeroSection() {
       {/* Text Content & CTAs */}
       <div className="absolute inset-0 z-30 container mx-auto px-6 flex flex-col justify-end items-start pb-24 md:pb-32 pointer-events-none">
         <motion.div 
-          className="max-w-3xl pointer-events-auto"
+          className="max-w-3xl pointer-events-auto -ml-2 md:-ml-6"
           initial="hidden"
           animate="visible"
           variants={{
@@ -67,7 +67,7 @@ export function HeroSection() {
           </motion.div>
           
           <motion.h1 
-            className="text-5xl md:text-7xl lg:text-8xl font-heading text-dark-brown-red leading-[1.05] mb-6 tracking-wide"
+            className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold text-dark-brown-red leading-[1.05] mb-6 tracking-wide"
             variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
           >
             Protect. <br />
