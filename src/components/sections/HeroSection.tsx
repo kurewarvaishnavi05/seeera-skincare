@@ -30,7 +30,7 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-black">
+    <section className="relative h-[80vh] md:h-[75vh] w-full flex flex-col items-center justify-center overflow-hidden bg-black">
       
       {/* Background Image with Parallax */}
       <motion.div style={{ y }} className="absolute inset-0 z-0 scale-105">
