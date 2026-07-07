@@ -80,7 +80,7 @@ export function Navbar() {
           </nav>
         </div>
 
-        <Link href="/" className={cn("text-2xl md:text-3xl font-heading font-bold tracking-widest uppercase text-center flex-1 lg:flex-none", textColorClass)}>
+        <Link href="/" className="text-2xl md:text-3xl font-heading font-bold tracking-widest uppercase text-center flex-1 lg:flex-none text-dark-brown-red">
           SEEERA
         </Link>
 
