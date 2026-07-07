@@ -11,10 +11,6 @@ const benefits = [
 export function WhyChooseUs() {
   return (
     <section className="py-24 bg-cream overflow-hidden">
-      {/* Banner image added above the section as requested */}
-      <div className="w-full mb-24">
-        <img src="/images/why-seeera-wide-banner.jpg" alt="Seeera Skincare Products" className="w-full h-auto object-cover" />
-      </div>
 
       <div className="container mx-auto px-6">
         <div className="flex flex-col lg:flex-row gap-16 items-center">

@@ -48,7 +48,7 @@ export function Navbar() {
     }
   });
 
-  const textColorClass = isScrolled ? "text-cream" : "text-primary-brown";
+  const textColorClass = "text-white";
 
   return (
     <motion.header
