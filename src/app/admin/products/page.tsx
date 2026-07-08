@@ -4,8 +4,10 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Plus, Edit, Trash2, Search, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useAuthStore } from '@/store/useAuthStore';
 
 export default function AdminProducts() {
+  const { token } = useAuthStore();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
@@ -36,10 +38,17 @@ export default function AdminProducts() {
   const confirmDelete = async () => {
     if (!productToDelete) return;
     try {
-      const res = await fetch(`/api/products/${productToDelete}`, { method: 'DELETE' });
+      const res = await fetch(`/api/products/${productToDelete}`, { 
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
       const data = await res.json();
-      if (data.success) {
+      if (res.ok || data.success) {
         setProducts(products.filter((p: any) => p._id !== productToDelete));
+      } else {
+        alert(data.message || 'Failed to delete product');
       }
     } catch (error) {
       console.error(error);
