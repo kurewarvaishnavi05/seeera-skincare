@@ -4,6 +4,8 @@ import Product from '@/models/Product';
 import { headers } from 'next/headers';
 import jwt from 'jsonwebtoken';
 
+export const dynamic = 'force-dynamic';
+
 // Helper to check admin
 async function isAdmin() {
   const authorization = headers().get('authorization');
