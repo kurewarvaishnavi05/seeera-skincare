@@ -46,6 +46,28 @@ export default function ProfilePage() {
     router.push('/login');
   };
 
+  const handleDeleteOrder = async (orderId: string) => {
+    if (!confirm('Are you sure you want to delete this order?')) return;
+    
+    try {
+      const res = await fetch(`/api/orders/${orderId}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      const data = await res.json();
+      if (data.success) {
+        setOrders(orders.filter((o: any) => o._id !== orderId));
+      } else {
+        alert(data.message || 'Failed to delete order');
+      }
+    } catch (error) {
+      console.error('Failed to delete order', error);
+      alert('Failed to delete order');
+    }
+  };
+
   if (!user) return null; // Will redirect
 
   return (
@@ -127,13 +149,22 @@ export default function ProfilePage() {
                             {order.items?.length || 0} {(order.items?.length || 0) === 1 ? 'item' : 'items'} in this order
                           </p>
                         </div>
-                        <Button 
-                          onClick={() => setExpandedOrderId(expandedOrderId === order._id ? null : order._id)}
-                          variant="outline" 
-                          className="border-primary-brown/20 text-primary-brown hover:bg-cream text-xs tracking-widest uppercase h-10 px-6 rounded-full shadow-none"
-                        >
-                          {expandedOrderId === order._id ? 'Hide Details' : 'View Details'}
-                        </Button>
+                        <div className="flex gap-2 w-full sm:w-auto">
+                          <Button 
+                            onClick={() => handleDeleteOrder(order._id)}
+                            variant="outline" 
+                            className="flex-1 sm:flex-none border-red-500/20 text-red-500 hover:bg-red-50 hover:border-red-500 text-xs tracking-widest uppercase h-10 px-6 rounded-full shadow-none transition-colors"
+                          >
+                            Delete
+                          </Button>
+                          <Button 
+                            onClick={() => setExpandedOrderId(expandedOrderId === order._id ? null : order._id)}
+                            variant="outline" 
+                            className="flex-1 sm:flex-none border-primary-brown/20 text-primary-brown hover:bg-cream text-xs tracking-widest uppercase h-10 px-6 rounded-full shadow-none"
+                          >
+                            {expandedOrderId === order._id ? 'Hide Details' : 'View Details'}
+                          </Button>
+                        </div>
                       </div>
 
                       {expandedOrderId === order._id && (
