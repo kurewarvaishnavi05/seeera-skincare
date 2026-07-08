@@ -7,22 +7,24 @@ import jwt from 'jsonwebtoken';
 // Helper to check admin
 async function isAdmin() {
   const authorization = headers().get('authorization');
-  if (!authorization || !authorization.startsWith('Bearer ')) return false;
+  if (!authorization || !authorization.startsWith('Bearer ')) return { auth: false, reason: 'Missing or invalid token format' };
   
   try {
     const token = authorization.split(' ')[1];
     const JWT_SECRET = process.env.JWT_SECRET || 'fallback_secret_key_for_dev';
     const decoded: any = jwt.verify(token, JWT_SECRET);
-    return decoded.role === 'admin';
-  } catch (error) {
-    return false;
+    if (decoded.role !== 'admin') return { auth: false, reason: 'User is not admin' };
+    return { auth: true };
+  } catch (error: any) {
+    return { auth: false, reason: 'Token verification failed: ' + error.message };
   }
 }
 
 export async function PUT(req: Request, { params }: { params: { id: string } }) {
   try {
-    if (!(await isAdmin())) {
-      return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
+    const adminCheck = await isAdmin();
+    if (!adminCheck.auth) {
+      return NextResponse.json({ message: 'Unauthorized', details: adminCheck.reason }, { status: 401 });
     }
 
     await dbConnect();
@@ -38,8 +40,9 @@ export async function PUT(req: Request, { params }: { params: { id: string } }) 
 
 export async function DELETE(req: Request, { params }: { params: { id: string } }) {
   try {
-    if (!(await isAdmin())) {
-      return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
+    const adminCheck = await isAdmin();
+    if (!adminCheck.auth) {
+      return NextResponse.json({ success: false, message: 'Unauthorized', details: adminCheck.reason }, { status: 401 });
     }
 
     await dbConnect();
