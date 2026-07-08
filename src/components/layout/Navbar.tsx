@@ -116,7 +116,7 @@ export function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-cream/95 backdrop-blur-md flex flex-col justify-center items-center h-screen w-full"
+            className="fixed inset-0 z-50 bg-cream/95 backdrop-blur-md flex flex-col justify-center items-center h-[100dvh] w-full overflow-y-auto py-10"
           >
             <button 
               className="absolute top-6 left-6 text-primary-brown hover:text-accent-brown transition-colors"
@@ -124,7 +124,7 @@ export function Navbar() {
             >
               <X className="w-8 h-8" />
             </button>
-            <nav className="flex flex-col items-center space-y-8 text-xl font-medium tracking-widest text-primary-brown uppercase">
+            <nav className="flex flex-col items-center space-y-6 md:space-y-8 text-lg md:text-xl font-medium tracking-widest text-primary-brown uppercase mt-8">
               <Link href="/shop" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-accent-brown transition-colors">Shop</Link>
               <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-accent-brown transition-colors">About</Link>
               <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-accent-brown transition-colors">Contact</Link>
