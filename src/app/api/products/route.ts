@@ -31,7 +31,7 @@ export async function GET(req: Request) {
     }
     
     const products = await Product.find(filter).sort({ createdAt: -1 });
-    return NextResponse.json(products, { status: 200 });
+    return NextResponse.json({ success: true, data: products }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ message: 'Server Error' }, { status: 500 });
   }
