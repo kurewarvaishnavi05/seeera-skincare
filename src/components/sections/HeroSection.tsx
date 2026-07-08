@@ -30,7 +30,7 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-black">
+    <section className="relative min-h-[100dvh] w-full flex flex-col items-center justify-center overflow-hidden bg-black">
       
       {/* Background Image with Parallax */}
       <motion.div style={{ y }} className="absolute inset-0 z-0 scale-105">
@@ -69,7 +69,7 @@ export function HeroSection() {
           </motion.div>
           
           <motion.h1 
-            className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold text-dark-brown-red leading-[1.05] mb-6 tracking-wide"
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-heading font-bold text-dark-brown-red leading-[1.05] mb-4 sm:mb-6 tracking-wide"
             variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
           >
             Protect. <br />
@@ -94,22 +94,6 @@ export function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
-      <motion.div 
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-3"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-      >
-        <span className="text-[9px] font-semibold uppercase tracking-[0.3em] text-white/60">Scroll</span>
-        <div className="w-[1px] h-12 bg-white/20 relative overflow-hidden">
-          <motion.div 
-            className="absolute top-0 left-0 w-full h-1/2 bg-white/80"
-            animate={{ y: ["-100%", "200%"] }}
-            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          />
-        </div>
-      </motion.div>
     </section>
   );
 }
