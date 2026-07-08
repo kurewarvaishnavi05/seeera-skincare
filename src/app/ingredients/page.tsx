@@ -50,7 +50,7 @@ export default function IngredientsPage() {
         <div className="mt-20 text-center">
           <h3 className="text-2xl font-heading text-primary-brown mb-6">Experience the Difference</h3>
           <Button href="/shop" size="lg" className="bg-dark-brown-red text-white hover:bg-primary-brown px-12 h-14">
-            Shop Formulations
+            Shop Products
           </Button>
         </div>
       </div>
