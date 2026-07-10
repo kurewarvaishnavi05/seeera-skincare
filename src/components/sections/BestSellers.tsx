@@ -14,7 +14,7 @@ export function BestSellers() {
   const { addItem } = useCartStore();
   const { items: wishlistItems, addItem: addWishlistItem, removeItem: removeWishlistItem } = useWishlistStore();
   return (
-    <section className="py-24 bg-white overflow-hidden">
+    <section className="pt-12 pb-8 bg-white overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="flex justify-between items-end mb-12">
           <motion.h2 
@@ -78,7 +78,7 @@ export function BestSellers() {
                   >
                     <Heart className={cn("w-4 h-4", inWishlist && "fill-current")} />
                   </button>
-                  <img src={product.image} alt={product.name} className="w-full h-full object-contain p-8 group-hover:scale-105 transition-transform duration-700" />
+                  <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                   
                   <div className="absolute inset-0 bg-primary-brown/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
                     <div className="translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">

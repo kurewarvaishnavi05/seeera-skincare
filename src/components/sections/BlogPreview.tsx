@@ -8,7 +8,7 @@ import { blogPosts } from '@/lib/blog';
 
 export function BlogPreview() {
   return (
-    <section className="py-24 bg-white">
+    <section className="pt-24 pb-8 bg-white">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10 md:mb-16 gap-4 sm:gap-6">
           <div>
@@ -39,12 +39,12 @@ export function BlogPreview() {
               className="h-full"
             >
               <Link href="/blog" className="group cursor-pointer flex flex-col h-full">
-                <div className="aspect-[4/3] rounded-[20px] overflow-hidden mb-6 relative bg-gray-50 flex items-center justify-center">
+                <div className="rounded-[20px] overflow-hidden mb-6 relative flex items-center justify-center">
                   <div className="absolute inset-0 bg-primary-brown/20 z-10 group-hover:bg-transparent transition-colors duration-500"></div>
                   <img 
                     src={post.image} 
                     alt={post.title} 
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
+                    className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                 </div>
                 <div className="flex flex-col flex-1">

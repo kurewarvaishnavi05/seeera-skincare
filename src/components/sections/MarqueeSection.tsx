@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 
 export function MarqueeSection() {
-  const text = "SAFE & CRUELTY FREE | ✨ CICA + PDRN TECHNOLOGY | FREE SHIPPING ABOVE ₹999 | ";
+  const text = "SAFE & CRUELTY FREE | CICA + PDRN TECHNOLOGY | FREE SHIPPING ABOVE ₹999 | ";
   
   return (
     <div className="w-full bg-dark-brown-red py-4 md:py-5 overflow-hidden flex items-center relative z-10">

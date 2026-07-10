@@ -8,7 +8,7 @@ const faqs = [
 
 export function FAQSection() {
   return (
-    <section className="py-32 bg-cream">
+    <section className="pt-12 pb-12 bg-cream">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
           <div className="lg:col-span-4">

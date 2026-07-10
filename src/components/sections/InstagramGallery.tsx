@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Button } from '../ui/Button';
 
 const posts = [
-  { id: 1, image: "/images/community-1.jpg" },
+  { id: 1, image: "/images/community-1-new.jpg" },
   { id: 2, image: "/images/community-2.jpg" },
   { id: 3, image: "/images/community-3.jpg" },
   { id: 4, image: "/images/community-4.jpg" }
@@ -46,7 +46,7 @@ export function InstagramGallery() {
   };
 
   return (
-    <section className="py-24 bg-white">
+    <section className="pt-12 pb-8 bg-white">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="text-center mb-16 max-w-2xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-heading text-dark-brown-red mb-4">

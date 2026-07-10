@@ -44,7 +44,7 @@ const reviews = [
 
 export function CustomerReviews() {
   return (
-    <section className="py-24 bg-white">
+    <section className="pt-8 pb-8 bg-white">
       <div className="container mx-auto px-6 max-w-7xl">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
@@ -63,14 +63,14 @@ export function CustomerReviews() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.6 }}
-              className="bg-white p-8 rounded-xl border border-gray-100 shadow-sm flex flex-col hover:shadow-md transition-shadow duration-300"
+              className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex flex-col hover:shadow-md transition-shadow duration-300"
             >
-              <div className="flex mb-6 text-[#FFD700]">
+              <div className="flex mb-3 text-[#FFD700]">
                 {[...Array(5)].map((_, idx) => (
                   <Star key={idx} className="w-5 h-5 fill-current border-none" />
                 ))}
               </div>
-              <p className="text-dark-brown font-light text-sm mb-12 leading-relaxed flex-1 text-left">
+              <p className="text-dark-brown font-light text-sm mb-4 leading-relaxed flex-1 text-left">
                 {review.text}
               </p>
               <div className="text-left mt-auto">

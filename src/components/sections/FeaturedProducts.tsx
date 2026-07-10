@@ -16,9 +16,9 @@ export function FeaturedProducts() {
   const featuredProducts = products.slice(0, 3);
   
   return (
-    <section className="py-32 bg-[#F8F5F2]">
+    <section className="pt-12 pb-4 bg-[#F8F5F2]">
       <div className="container mx-auto px-6 max-w-7xl">
-        <div className="text-center mb-20">
+        <div className="text-center mb-10">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -64,7 +64,7 @@ export function FeaturedProducts() {
                   )}
 
                   {/* Image */}
-                  <img src={product.image} alt={product.name} className="w-full h-full object-contain p-4 md:p-8 group-hover:scale-[1.05] transition-transform duration-700" />
+                  <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-700" />
                   
                   {/* Quick View Hover */}
                   <div className="absolute inset-0 bg-primary-brown/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden md:flex items-center justify-center">
@@ -152,7 +152,7 @@ export function FeaturedProducts() {
           )})}
         </motion.div>
         
-        <div className="text-center mt-20 px-6 sm:px-0">
+        <div className="text-center mt-6 px-6 sm:px-0">
           <Button href="/shop" variant="outline" className="w-full sm:w-auto px-10 py-4 h-auto text-sm tracking-widest uppercase border-primary-brown/30 hover:bg-primary-brown hover:text-white transition-all duration-300">
             Explore All Products &rarr;
           </Button>

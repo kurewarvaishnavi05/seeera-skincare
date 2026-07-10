@@ -54,7 +54,7 @@ export function Navbar() {
     <motion.header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled ? "bg-dark-brown-red py-4 shadow-md" : "bg-transparent py-6"
+        isScrolled ? "bg-dark-brown-red py-2 shadow-md" : "bg-transparent py-4"
       )}
       variants={{
         visible: { y: "0%" },
@@ -73,10 +73,10 @@ export function Navbar() {
           >
             <Menu className="w-6 h-6" />
           </button>
-          <nav className={cn("hidden lg:flex items-center space-x-8 text-sm font-medium tracking-wider uppercase", textColorClass)}>
-            <Link href="/shop" className="hover:text-accent-brown transition-colors">Shop</Link>
-            <Link href="/about" className="hover:text-accent-brown transition-colors">About</Link>
-            <Link href="/contact" className="hover:text-accent-brown transition-colors">Contact</Link>
+          <nav className={cn("hidden lg:flex items-center space-x-8 text-base font-bold tracking-widest uppercase", textColorClass)}>
+            <Link href="/shop" className="hover:text-accent-brown transition-all duration-300 transform hover:scale-110">Shop</Link>
+            <Link href="/about" className="hover:text-accent-brown transition-all duration-300 transform hover:scale-110">About</Link>
+            <Link href="/contact" className="hover:text-accent-brown transition-all duration-300 transform hover:scale-110">Contact</Link>
           </nav>
         </div>
 
@@ -85,24 +85,24 @@ export function Navbar() {
         </Link>
 
         <div className={cn("flex items-center justify-end space-x-4 sm:space-x-6", textColorClass)}>
-          <Link href={user ? "/profile" : "/login"} className="hover:text-accent-brown transition-colors hidden sm:block text-sm font-medium tracking-wider uppercase">
+          <Link href={user ? "/profile" : "/login"} className="hover:text-accent-brown transition-all duration-300 transform hover:scale-110 hidden sm:block text-base font-bold tracking-widest uppercase">
             {user ? "Profile" : "Login"}
           </Link>
-          <button type="button" onClick={() => setIsSearchOpen(true)} className="hover:text-accent-brown transition-colors hidden sm:block">
+          <button type="button" onClick={() => setIsSearchOpen(true)} className="hover:text-accent-brown transition-all duration-300 transform hover:scale-110 hidden sm:block">
             <Search className="w-5 h-5" />
           </button>
-          <Link href="/wishlist" className="hover:text-accent-brown transition-colors relative">
+          <Link href="/wishlist" className="hover:text-accent-brown transition-all duration-300 transform hover:scale-110 relative">
             <Heart className="w-5 h-5" />
             {wishlistItems.length > 0 && (
-              <span className="absolute -top-2 -right-2 bg-accent-brown text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full">
+              <span className="absolute -top-2 -right-2 bg-accent-brown text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full font-bold">
                 {wishlistItems.length}
               </span>
             )}
           </Link>
-          <button type="button" onClick={openCart} className="hover:text-accent-brown transition-colors relative">
+          <button type="button" onClick={openCart} className="hover:text-accent-brown transition-all duration-300 transform hover:scale-110 relative">
             <ShoppingBag className="w-5 h-5" />
             {itemCount > 0 && (
-              <span className="absolute -top-2 -right-2 bg-accent-brown text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full">
+              <span className="absolute -top-2 -right-2 bg-accent-brown text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full font-bold">
                 {itemCount}
               </span>
             )}

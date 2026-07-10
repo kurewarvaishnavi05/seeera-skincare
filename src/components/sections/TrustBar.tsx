@@ -13,9 +13,9 @@ const trustFeatures = [
 
 export function TrustBar() {
   return (
-    <section className="py-12 bg-cream border-y border-primary-brown/10">
-      <div className="container mx-auto px-6 max-w-7xl">
-        <div className="flex flex-wrap justify-center gap-8 md:gap-16">
+    <section className="py-6 bg-cream border-y border-primary-brown/10 w-full overflow-hidden">
+      <div className="w-full px-4 sm:px-6 md:px-12">
+        <div className="flex flex-wrap justify-between md:justify-around gap-4 md:gap-8">
           {trustFeatures.map((feature, index) => (
             <motion.div 
               key={index}
@@ -23,13 +23,13 @@ export function TrustBar() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="flex flex-col items-center text-center max-w-[140px]"
+              className="flex flex-col items-center text-center max-w-[200px]"
             >
-              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-4 shadow-sm text-dark-brown-red">
-                <feature.icon className="w-6 h-6 stroke-[1.5]" />
+              <div className="w-20 h-20 md:w-24 md:h-24 bg-white rounded-full flex items-center justify-center mb-5 md:mb-6 shadow-md text-dark-brown-red transition-transform hover:scale-110 duration-300">
+                <feature.icon className="w-10 h-10 md:w-12 md:h-12 stroke-[1.5]" />
               </div>
-              <h4 className="font-heading font-medium text-primary-brown mb-1">{feature.title}</h4>
-              <p className="text-xs text-dark-brown/70 font-light">{feature.description}</p>
+              <h4 className="font-heading font-bold text-lg md:text-xl text-primary-brown mb-1.5">{feature.title}</h4>
+              <p className="text-sm md:text-base text-dark-brown/80 font-light">{feature.description}</p>
             </motion.div>
           ))}
         </div>

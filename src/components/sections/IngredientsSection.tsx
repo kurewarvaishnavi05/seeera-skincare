@@ -11,7 +11,7 @@ const ingredients = [
 
 export function IngredientsSection() {
   return (
-    <section className="py-32 bg-cream">
+    <section className="pt-12 pb-12 bg-cream">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="text-center mb-16">
           <motion.h2 

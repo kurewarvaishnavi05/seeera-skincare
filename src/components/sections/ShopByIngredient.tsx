@@ -15,7 +15,7 @@ const ingredients = [
 
 export function ShopByIngredient() {
   return (
-    <section className="py-24 bg-white overflow-hidden">
+    <section className="pt-4 pb-16 bg-white overflow-hidden">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="text-center mb-16">
           <span className="text-xs tracking-[0.2em] text-accent-brown uppercase mb-4 block font-semibold">Science & Nature</span>
@@ -41,13 +41,15 @@ export function ShopByIngredient() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
                 <Link href={`/shop?ingredient=${ingredient.name.toLowerCase()}`} className="block group h-full bg-[#F8F5F2] rounded-[24px] p-8 hover:bg-dark-brown-red transition-colors duration-500 shadow-sm hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.2)] hover:-translate-y-2">
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-colors duration-500 ${ingredient.color} group-hover:bg-white/20 group-hover:text-white`}>
-                    <Icon className="w-7 h-7" />
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className={`w-14 h-14 shrink-0 rounded-2xl flex items-center justify-center transition-colors duration-500 ${ingredient.color} group-hover:bg-white/20 group-hover:text-white`}>
+                      <Icon className="w-7 h-7" />
+                    </div>
+                    
+                    <h3 className="text-2xl font-heading font-bold text-primary-brown group-hover:text-white transition-colors duration-500">
+                      {ingredient.name}
+                    </h3>
                   </div>
-                  
-                  <h3 className="text-2xl font-heading text-primary-brown mb-3 group-hover:text-white transition-colors duration-500">
-                    {ingredient.name}
-                  </h3>
                   
                   <p className="text-dark-brown/80 font-light mb-8 group-hover:text-white/80 transition-colors duration-500 leading-relaxed">
                     {ingredient.description}
