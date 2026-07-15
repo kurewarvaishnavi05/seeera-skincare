@@ -51,7 +51,7 @@ export function WhyChooseUs() {
             </div>
           </div>
           
-          <div className="w-full lg:w-7/12 grid grid-cols-2 gap-4 md:gap-6 mt-10 lg:mt-0 h-[300px] sm:h-[400px] lg:h-[450px] relative">
+          <div className="w-full lg:w-7/12 flex justify-center items-center gap-4 sm:gap-8 mt-10 lg:mt-0 relative">
             {/* Decorative Background Glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#F8F5F2] rounded-full blur-[100px] -z-10 opacity-70" />
 
@@ -60,20 +60,20 @@ export function WhyChooseUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1 }}
-              className="w-full h-full rounded-[32px] overflow-hidden shadow-2xl scale-[1.1] lg:scale-[1.2] origin-right"
+              className="w-1/2 aspect-square rounded-full overflow-hidden shadow-2xl relative z-10 hover:z-30 hover:scale-[1.05] transition-all duration-700 border-4 border-white/50"
             >
               {/* Image 1 */}
-              <img src="/images/why-seeera-1.jpg" alt="Seeera Key Ingredients" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
+              <img src="/images/why-seeera-1.jpg" alt="Seeera Key Ingredients" className="w-full h-full object-cover" />
             </motion.div>
             <motion.div 
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="w-full h-full rounded-[32px] overflow-hidden shadow-2xl scale-[1.1] lg:scale-[1.2] origin-left"
+              className="w-1/2 aspect-square rounded-full overflow-hidden shadow-2xl relative z-20 mt-16 sm:mt-24 lg:mt-32 hover:z-30 hover:scale-[1.05] transition-all duration-700 border-4 border-white/50"
             >
               {/* Image 2 */}
-              <img src="/images/why-seeera-2.jpg" alt="Seeera Velvet Roozh" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
+              <img src="/images/why-seeera-2.jpg" alt="Seeera Velvet Roozh" className="w-full h-full object-cover" />
             </motion.div>
           </div>
         </div>
