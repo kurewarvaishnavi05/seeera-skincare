@@ -60,7 +60,7 @@ export function WhyChooseUs() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1 }}
-              className="w-[90%] sm:w-[80%] lg:w-[90%] aspect-square rounded-full overflow-hidden shadow-2xl z-10 hover:z-30 transition-all duration-700 border-[6px] border-cream"
+              className="w-full sm:w-[90%] lg:w-full aspect-square rounded-full overflow-hidden shadow-2xl z-10 hover:z-30 transition-all duration-700 border-[12px] border-white"
             >
               {/* Hero Image */}
               <img src="/images/why-seeera-1.jpg" alt="Seeera Key Ingredients" className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" />
