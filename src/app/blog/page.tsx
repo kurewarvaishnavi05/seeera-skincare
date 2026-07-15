@@ -49,7 +49,7 @@ export default function BlogPage() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 + (index * 0.1), duration: 0.6 }}
-              className="group cursor-pointer flex flex-col h-full bg-white rounded-3xl p-4 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2"
+              className="group cursor-pointer flex flex-col h-full hover:-translate-y-2 transition-all duration-500"
             >
               <Link href={`/blog/${post.id}`} className="flex flex-col h-full">
                 <div className="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative bg-gray-50 flex items-center justify-center">
@@ -60,7 +60,7 @@ export default function BlogPage() {
                   <img 
                     src={post.image} 
                     alt={post.title} 
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700 p-2"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                 </div>
                 <div className="flex flex-col flex-1 px-2">
