@@ -55,15 +55,24 @@ export function CustomerReviews() {
           Real Results
         </motion.h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div 
+          className="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar px-6 sm:px-0"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+          }}
+        >
           {reviews.map((review, i) => (
             <motion.div 
               key={review.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.6 }}
-              className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex flex-col hover:shadow-md transition-shadow duration-300"
+              variants={{
+                hidden: { opacity: 0, x: 50 },
+                visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } }
+              }}
+              className="min-w-[280px] md:min-w-[320px] lg:min-w-[380px] shrink-0 snap-start bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex flex-col hover:shadow-md transition-shadow duration-300"
             >
               <div className="flex mb-3 text-[#FFD700]">
                 {[...Array(5)].map((_, idx) => (
@@ -81,7 +90,7 @@ export function CustomerReviews() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
