@@ -51,16 +51,9 @@ export function ShopByIngredient() {
                     </h3>
                   </div>
                   
-                  <p className="text-dark-brown/80 font-light mb-8 group-hover:text-white/80 transition-colors duration-500 leading-relaxed">
+                  <p className="text-dark-brown/80 font-light group-hover:text-white/80 transition-colors duration-500 leading-relaxed">
                     {ingredient.description}
                   </p>
-                  
-                  <div className="flex items-center text-sm font-semibold tracking-widest uppercase text-accent-brown group-hover:text-white transition-colors duration-500">
-                    Learn More 
-                    <svg className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </div>
                 </Link>
               </motion.div>
             );
