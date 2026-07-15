@@ -49,7 +49,7 @@ export function AllProducts() {
 
   return (
     <section className="pt-24 pb-16 bg-[#F8F5F2]">
-      <div className="container mx-auto px-6 max-w-7xl">
+      <div className="container mx-auto px-6 md:px-12">
         <div className="flex justify-between items-end mb-12">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -66,7 +66,7 @@ export function AllProducts() {
         </div>
 
         {/* Responsive Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 lg:gap-10">
           {productsList.map((product, index) => (
             <motion.div
               key={product.id}
@@ -76,8 +76,8 @@ export function AllProducts() {
               transition={{ delay: index * 0.1, duration: 0.8 }}
             >
               <div className="flex flex-col h-full group hover:-translate-y-2 transition-all duration-500">
-                <div className="relative aspect-square mb-6">
-                  <Link href={`/product/${product.slug}`} className="block w-full h-full rounded-[20px] overflow-hidden">
+                <div className="relative aspect-[4/5] mb-6">
+                  <Link href={`/product/${product.slug}`} className="block w-full h-full rounded-[20px] overflow-hidden shadow-sm">
                     <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-700" />
                     
                     {/* Quick View Hover */}
