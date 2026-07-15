@@ -11,6 +11,13 @@ export async function POST(req: Request) {
       return NextResponse.json({ message: 'Email is required' }, { status: 400 });
     }
 
+    if (!process.env.MONGODB_URI) {
+      return NextResponse.json(
+        { message: 'Successfully subscribed to the newsletter! (Mocked - DB not connected)' },
+        { status: 201 }
+      );
+    }
+
     await dbConnect();
 
     // Check if subscriber already exists

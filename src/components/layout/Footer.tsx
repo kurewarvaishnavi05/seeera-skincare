@@ -152,17 +152,17 @@ export function Footer() {
               )}
             </form>
             
-            <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 rounded-full border border-cream/30 flex items-center justify-center hover:bg-cream hover:text-dark-brown-red transition-all">
+            <div className="flex space-x-4 mt-6">
+              <a href="https://facebook.com/seeeraskincare" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-cream/30 flex items-center justify-center hover:bg-cream hover:text-dark-brown-red transition-all">
                 <FacebookIcon className="w-4 h-4" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full border border-cream/30 flex items-center justify-center hover:bg-cream hover:text-dark-brown-red transition-all">
+              <a href="https://instagram.com/seeeraskincare" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-cream/30 flex items-center justify-center hover:bg-cream hover:text-dark-brown-red transition-all">
                 <InstagramIcon className="w-4 h-4" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full border border-cream/30 flex items-center justify-center hover:bg-cream hover:text-dark-brown-red transition-all">
+              <a href="https://twitter.com/seeeraskincare" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-cream/30 flex items-center justify-center hover:bg-cream hover:text-dark-brown-red transition-all">
                 <TwitterIcon className="w-4 h-4" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full border border-cream/30 flex items-center justify-center hover:bg-cream hover:text-dark-brown-red transition-all">
+              <a href="https://youtube.com/@seeeraskincare" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-cream/30 flex items-center justify-center hover:bg-cream hover:text-dark-brown-red transition-all">
                 <YoutubeIcon className="w-4 h-4" />
               </a>
             </div>
