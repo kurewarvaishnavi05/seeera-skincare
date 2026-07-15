@@ -55,42 +55,36 @@ export function CustomerReviews() {
           Real Results
         </motion.h2>
         
-        <motion.div 
-          className="flex gap-6 overflow-x-auto pb-8 pt-4 snap-x snap-mandatory hide-scrollbar px-6 sm:px-0"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={{
-            hidden: { opacity: 0 },
-            visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
-          }}
-        >
-          {reviews.map((review, i) => (
-            <motion.div 
-              key={review.id}
-              variants={{
-                hidden: { opacity: 0, x: 50 },
-                visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } }
-              }}
-              className="w-[260px] md:w-[280px] lg:w-[320px] shrink-0 snap-start bg-white p-6 rounded-2xl hover:-translate-y-2 hover:shadow-lg transition-all duration-500 border border-gray-100 flex flex-col"
-            >
-              <div className="flex mb-4 text-[#FFD700]">
-                {[...Array(5)].map((_, idx) => (
-                  <Star key={idx} className="w-5 h-5 fill-current border-none" />
-                ))}
+        <div className="relative overflow-hidden w-full pb-8 pt-4">
+          <motion.div 
+            className="flex gap-6 w-max"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ ease: "linear", duration: 40, repeat: Infinity }}
+            whileHover={{ animationPlayState: "paused" }} // Optional: pause on hover but Framer Motion handles this differently. Let's just keep it simple.
+          >
+            {[...reviews, ...reviews].map((review, i) => (
+              <div 
+                key={`${review.id}-${i}`}
+                className="w-[260px] md:w-[280px] lg:w-[320px] shrink-0 bg-white p-6 rounded-2xl hover:-translate-y-2 hover:shadow-lg transition-all duration-500 border border-gray-100 flex flex-col"
+              >
+                <div className="flex mb-4 text-[#FFD700]">
+                  {[...Array(5)].map((_, idx) => (
+                    <Star key={idx} className="w-5 h-5 fill-current border-none" />
+                  ))}
+                </div>
+                <p className="text-dark-brown font-light text-sm mb-6 leading-relaxed flex-1 text-left">
+                  {review.text}
+                </p>
+                <div className="text-left mt-auto">
+                  <p className="text-xs font-semibold tracking-widest text-primary-brown">{review.author}</p>
+                  {review.tag && (
+                    <p className="text-xs text-dark-brown/50 mt-1">{review.tag}</p>
+                  )}
+                </div>
               </div>
-              <p className="text-dark-brown font-light text-sm mb-6 leading-relaxed flex-1 text-left">
-                {review.text}
-              </p>
-              <div className="text-left mt-auto">
-                <p className="text-xs font-semibold tracking-widest text-primary-brown">{review.author}</p>
-                {review.tag && (
-                  <p className="text-xs text-dark-brown/50 mt-1">{review.tag}</p>
-                )}
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );
