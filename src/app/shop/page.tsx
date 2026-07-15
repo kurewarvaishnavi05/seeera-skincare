@@ -75,30 +75,54 @@ export default function ShopPage() {
               transition={{ delay: index * 0.1, duration: 0.8 }}
             >
               <div className="flex flex-col h-full group hover:-translate-y-2 transition-all duration-500">
-                <Link href={`/product/${product.slug}`} className="block relative aspect-square overflow-hidden mb-8">
+                <div className="relative aspect-square mb-6">
+                  <Link href={`/product/${product.slug}`} className="block w-full h-full rounded-[20px] overflow-hidden">
+                    <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-700" />
+                    
+                    {/* Quick View Hover */}
+                    <div className="absolute inset-0 bg-primary-brown/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center pointer-events-none">
+                      <div className="translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                        <Button variant="outline" className="bg-white/95 backdrop-blur-sm border-none text-primary-brown text-xs tracking-widest px-6 shadow-sm rounded-full h-10 pointer-events-auto">
+                          <Eye className="w-4 h-4 mr-2" /> Quick View
+                        </Button>
+                      </div>
+                    </div>
+                  </Link>
+                  
                   {/* Badges */}
                   {product.badges && product.badges.length > 0 && (
-                    <div className="absolute top-4 left-4 z-20 flex flex-col gap-2">
+                    <div className="absolute top-4 left-4 z-20 flex flex-col gap-2 pointer-events-none">
                       {product.badges.map(badge => (
-                        <span key={badge} className="bg-primary-brown text-white text-[10px] font-semibold tracking-wider uppercase px-3 py-1 rounded-full">
+                        <span key={badge} className="bg-primary-brown text-white text-[10px] font-semibold tracking-wider uppercase px-3 py-1 rounded-full shadow-sm">
                           {badge}
                         </span>
                       ))}
                     </div>
                   )}
 
-                  {/* Image */}
-                  <img src={product.image} alt={product.name} className="w-full h-full object-contain p-2 group-hover:scale-[1.05] transition-transform duration-700" />
-                  
-                  {/* Quick View Hover */}
-                  <div className="absolute inset-0 bg-primary-brown/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                    <div className="translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                      <Button variant="outline" className="bg-white/95 backdrop-blur-sm border-none hover:bg-white text-primary-brown text-xs tracking-widest px-6 shadow-sm rounded-full h-10">
-                        <Eye className="w-4 h-4 mr-2" /> Quick View
-                      </Button>
-                    </div>
-                  </div>
-                </Link>
+                  {/* Wishlist Button Overlay */}
+                  <button 
+                    onClick={(e) => { 
+                      e.preventDefault(); 
+                      e.stopPropagation();
+                      const inWishlist = wishlistItems.some(item => item.id === product.id);
+                      if (inWishlist) {
+                        removeWishlistItem(product.id);
+                      } else {
+                        addWishlistItem({
+                          id: product.id,
+                          name: product.name,
+                          price: product.price,
+                          image: product.image,
+                          slug: product.slug
+                        });
+                      }
+                    }}
+                    className="absolute top-4 right-4 z-20 w-9 h-9 flex items-center justify-center rounded-full bg-[#FAF8F5] shadow text-primary-brown hover:scale-110 transition-transform"
+                  >
+                    <Heart className={cn("w-4 h-4", wishlistItems.some(item => item.id === product.id) && "fill-current text-dark-brown-red")} />
+                  </button>
+                </div>
                 
                 <div className="flex-1 flex flex-col px-2">
                   <h3 className="text-xl font-heading text-primary-brown mb-2">{product.name}</h3>
@@ -128,7 +152,7 @@ export default function ShopPage() {
                   <p className="text-xs text-dark-brown/70 font-light mb-6">High Quality • Customer Favorite</p>
                   
                   {/* Actions */}
-                  <div className="flex flex-col sm:flex-row items-center gap-3 mt-auto pt-4 border-t border-primary-brown/10">
+                  <div className="mt-auto pt-4 border-t border-primary-brown/10">
                     <Button 
                       onClick={(e) => {
                         e.preventDefault();
@@ -140,36 +164,10 @@ export default function ShopPage() {
                           image: product.image
                         });
                       }}
-                      className="w-full sm:flex-1 text-xs py-3 h-auto uppercase tracking-widest bg-dark-brown-red hover:bg-primary-brown text-white transition-colors"
+                      className="w-full text-xs py-3 h-auto uppercase tracking-widest bg-dark-brown-red hover:bg-primary-brown text-white transition-colors"
                     >
                       Add to Cart
                     </Button>
-                    <button 
-                      onClick={(e) => { 
-                        e.preventDefault(); 
-                        e.stopPropagation();
-                        const inWishlist = wishlistItems.some(item => item.id === product.id);
-                        if (inWishlist) {
-                          removeWishlistItem(product.id);
-                        } else {
-                          addWishlistItem({
-                            id: product.id,
-                            name: product.name,
-                            price: product.price,
-                            image: product.image,
-                            slug: product.slug
-                          });
-                        }
-                      }}
-                      className={cn(
-                        "w-full sm:w-12 h-12 flex items-center justify-center rounded-full sm:rounded-full border transition-all hover:scale-110 active:scale-95",
-                        wishlistItems.some(item => item.id === product.id)
-                          ? "bg-dark-brown-red text-white border-dark-brown-red"
-                          : "border-primary-brown/20 text-primary-brown hover:bg-dark-brown-red hover:text-white hover:border-dark-brown-red"
-                      )}
-                    >
-                      <Heart className={cn("w-4 h-4", wishlistItems.some(item => item.id === product.id) && "fill-current")} />
-                    </button>
                   </div>
                 </div>
               </div>
