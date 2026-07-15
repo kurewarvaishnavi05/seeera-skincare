@@ -10,12 +10,13 @@ export default function OurStoryPage() {
         
         <div className="flex flex-col lg:flex-row items-center gap-16 mb-24">
           <div className="w-full lg:w-1/2">
-            <div className="relative aspect-[4/5] rounded-[20px] overflow-hidden shadow-xl">
+            <div className="relative rounded-[20px] overflow-hidden shadow-xl">
               <Image 
-                src="/images/hero-woman.jpg" 
-                alt="SeeEra Founder" 
-                fill 
-                className="object-cover"
+                src="/inclusive_beauty_lifestyle.png" 
+                alt="SeeEra Inclusive Beauty" 
+                width={800}
+                height={800}
+                className="w-full h-auto"
               />
             </div>
           </div>
