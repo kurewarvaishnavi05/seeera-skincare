@@ -10,13 +10,12 @@ export default function OurStoryPage() {
         
         <div className="flex flex-col lg:flex-row items-center gap-16 mb-24">
           <div className="w-full lg:w-1/2">
-            <div className="relative rounded-[20px] overflow-hidden shadow-xl">
+            <div className="relative aspect-[4/5] rounded-[20px] overflow-hidden shadow-xl">
               <Image 
-                src="/inclusive_beauty_lifestyle.png" 
-                alt="SeeEra Inclusive Beauty" 
-                width={800}
-                height={800}
-                className="w-full h-auto"
+                src="/images/hero-woman.jpg" 
+                alt="SeeEra Founder" 
+                fill 
+                className="object-cover"
               />
             </div>
           </div>
@@ -40,6 +39,18 @@ export default function OurStoryPage() {
               </Link>
             </div>
           </div>
+        </div>
+
+        {/* Inclusive Beauty Full Width Image */}
+        <div className="w-full rounded-[20px] overflow-hidden shadow-xl mt-12 bg-white">
+          <Image 
+            src="/inclusive_beauty_lifestyle.png" 
+            alt="SeeEra Celebrates All Shades" 
+            width={1200}
+            height={800}
+            className="w-full h-auto"
+            priority
+          />
         </div>
         
       </div>
