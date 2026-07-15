@@ -7,7 +7,7 @@ import { ShopByIngredient } from "@/components/sections/ShopByIngredient";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { IngredientsSection } from "@/components/sections/IngredientsSection";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
-import { BestSellers } from "@/components/sections/BestSellers";
+import { AllProducts } from "@/components/sections/AllProducts";
 
 import { ResultsSection } from "@/components/sections/ResultsSection";
 import { CustomerReviews } from "@/components/sections/CustomerReviews";
@@ -31,7 +31,7 @@ export default function Home() {
       <BlogPreview />
       <ResultsSection />
       <IngredientsSection />
-      <BestSellers />
+      <AllProducts />
 
       <CustomerReviews />
       <FAQSection />
