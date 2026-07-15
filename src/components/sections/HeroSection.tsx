@@ -35,7 +35,7 @@ export function HeroSection() {
       {/* Background Image with Parallax */}
       <motion.div style={{ y }} className="absolute inset-0 z-0 scale-105">
         <Image 
-          src="/images/hero-banner-new.jpg" 
+          src="/images/hero-woman.jpg" 
           alt="Seeera Skincare Model" 
           fill
           priority
@@ -43,6 +43,8 @@ export function HeroSection() {
           quality={100}
           className="object-cover object-[60%_30%] md:object-center"
         />
+        {/* Added a subtle gradient to make the text pop without blending the entire image */}
+        <div className="absolute inset-0 bg-gradient-to-t from-cream/40 via-transparent to-transparent pointer-events-none"></div>
       </motion.div>
 
 
