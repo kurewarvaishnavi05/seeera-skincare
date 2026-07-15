@@ -80,7 +80,7 @@ export function Navbar() {
           </nav>
         </div>
 
-        <Link href="/" className={cn("text-2xl md:text-3xl font-heading font-bold tracking-widest uppercase text-center flex-1 lg:flex-none transition-colors", isScrolled ? "text-white" : "text-dark-brown-red")}>
+        <Link href="/" className={cn("text-2xl md:text-3xl font-heading font-bold tracking-widest uppercase text-center flex-1 lg:flex-none transition-colors lg:-ml-32", isScrolled ? "text-white" : "text-dark-brown-red")}>
           SEEERA
         </Link>
 
