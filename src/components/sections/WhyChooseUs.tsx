@@ -63,7 +63,7 @@ export function WhyChooseUs() {
               className="w-full sm:w-[90%] lg:w-full aspect-square rounded-full overflow-hidden shadow-2xl z-10 hover:z-30 transition-all duration-700 border-[12px] border-white"
             >
               {/* Hero Image */}
-              <img src="/why_seeera_products.jpg" alt="Seeera Key Ingredients" className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" />
+              <img src="/images/seeera-pomegranate-duo.jpg" alt="Seeera Key Ingredients" className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" />
             </motion.div>
           </div>
         </div>
