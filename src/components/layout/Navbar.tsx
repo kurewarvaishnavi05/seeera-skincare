@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { ShoppingBag, Search, Menu, Heart, X } from 'lucide-react';
 import { useScroll, useMotionValueEvent, motion, AnimatePresence } from 'framer-motion';
 import { cn } from '../ui/Button';
@@ -18,6 +18,8 @@ export function Navbar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const router = useRouter();
+  const pathname = usePathname();
+  const isDarkHero = pathname === '/about' || pathname === '/contact';
   const { openCart, items } = useCartStore();
   const { user } = useAuthStore();
   const { items: wishlistItems } = useWishlistStore();
@@ -48,7 +50,7 @@ export function Navbar() {
     }
   });
 
-  const textColorClass = isScrolled ? "text-white" : "text-dark-brown-red";
+  const textColorClass = (isScrolled || isDarkHero) ? "text-white" : "text-dark-brown-red";
 
   return (
     <motion.header
@@ -80,7 +82,7 @@ export function Navbar() {
           </nav>
         </div>
 
-        <Link href="/" className={cn("text-2xl md:text-3xl font-heading font-bold tracking-widest uppercase text-center flex-1 lg:flex-none transition-colors lg:-ml-16", isScrolled ? "text-white" : "text-dark-brown-red")}>
+        <Link href="/" className={cn("text-2xl md:text-3xl font-heading font-bold tracking-widest uppercase text-center flex-1 lg:flex-none transition-colors lg:-ml-16", (isScrolled || isDarkHero) ? "text-white" : "text-dark-brown-red")}>
           SEEERA
         </Link>
 
