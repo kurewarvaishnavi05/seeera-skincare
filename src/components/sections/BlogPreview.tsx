@@ -39,12 +39,11 @@ export function BlogPreview() {
               className="h-full"
             >
               <Link href="/blog" className="group cursor-pointer flex flex-col h-full">
-                <div className="rounded-[20px] overflow-hidden mb-6 relative flex items-center justify-center">
-                  <div className="absolute inset-0 bg-primary-brown/20 z-10 group-hover:bg-transparent transition-colors duration-500"></div>
+                <div className="aspect-square rounded-[24px] overflow-hidden mb-6 relative flex items-center justify-center shadow-sm hover:shadow-md transition-shadow">
                   <img 
                     src={post.image} 
                     alt={post.title} 
-                    className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                 </div>
                 <div className="flex flex-col flex-1">

@@ -52,9 +52,8 @@ export default function BlogPage() {
               className="group cursor-pointer flex flex-col h-full hover:-translate-y-2 transition-all duration-500"
             >
               <Link href={`/blog/${post.id}`} className="flex flex-col h-full">
-                <div className="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative bg-gray-50 flex items-center justify-center">
-                  <div className="absolute inset-0 bg-primary-brown/10 z-10 group-hover:bg-transparent transition-colors duration-500"></div>
-                  <span className="absolute top-4 left-4 z-20 bg-white/90 backdrop-blur-sm text-primary-brown text-[10px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">
+                <div className="aspect-square rounded-[24px] overflow-hidden mb-6 relative flex items-center justify-center shadow-sm hover:shadow-md transition-shadow">
+                  <span className="absolute top-4 left-4 z-20 bg-white/90 backdrop-blur-sm text-primary-brown text-[10px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full shadow-sm">
                     {post.category}
                   </span>
                   <img 
