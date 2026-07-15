@@ -29,7 +29,7 @@ export function AboutSection() {
             className="w-full lg:w-[55%] aspect-[4/3] lg:aspect-[6/5] relative z-10 mt-8 lg:mt-0 overflow-hidden shadow-xl"
           >
             <Image 
-              src="/science_meets_luxury.jpg" 
+              src="/why_seeera_products.jpg" 
               alt="Science Meets Luxury" 
               fill
               quality={100}
