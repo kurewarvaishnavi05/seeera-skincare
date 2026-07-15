@@ -8,7 +8,7 @@ import { useCartStore } from '@/store/useCartStore';
 import { useWishlistStore } from '@/store/useWishlistStore';
 import { products as fallbackProducts, getProductBySlug, Product } from '@/lib/products';
 import Link from 'next/link';
-import { BestSellers } from '@/components/sections/BestSellers';
+import { AllProducts } from '@/components/sections/AllProducts';
 import { cn } from '@/components/ui/Button';
 
 // Simple Accordion Component for PDP
@@ -281,7 +281,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
       <div className="bg-white border-t border-primary-brown/10">
         <div className="container mx-auto px-6 max-w-7xl py-20">
            <h2 className="text-3xl md:text-4xl font-heading text-primary-brown mb-12 text-center">You May Also Like</h2>
-           <BestSellers />
+           <AllProducts />
         </div>
       </div>
     </main>
