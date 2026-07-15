@@ -126,7 +126,7 @@ export function AllProducts() {
                 </div>
                 
                 <div className="flex-1 flex flex-col px-2">
-                  <h3 className="text-xl font-heading text-primary-brown mb-2">{product.name}</h3>
+                  <h3 className="text-xl font-heading text-dark-brown-red mb-2">{product.name}</h3>
                   <p className="text-sm text-dark-brown font-light mb-4 line-clamp-2 leading-relaxed">{product.description}</p>
                   
                   {/* Tags */}
