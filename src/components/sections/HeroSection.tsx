@@ -54,7 +54,7 @@ export function HeroSection() {
       {/* Text Content & CTAs */}
       <div className="absolute inset-0 z-30 container mx-auto px-6 md:px-12 flex flex-col justify-end items-start pb-24 md:pb-32 pointer-events-none">
         <motion.div 
-          className="max-w-3xl pointer-events-auto lg:-ml-32"
+          className="max-w-3xl pointer-events-auto -ml-4 md:-ml-12 lg:-ml-40"
           initial="hidden"
           animate="visible"
           variants={{
