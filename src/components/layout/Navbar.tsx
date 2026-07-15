@@ -65,7 +65,7 @@ export function Navbar() {
       transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
     >
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center gap-4">
           <button 
             type="button"
             className={cn("lg:hidden hover:text-accent-brown transition-colors", textColorClass)}
@@ -73,7 +73,7 @@ export function Navbar() {
           >
             <Menu className="w-6 h-6" />
           </button>
-          <nav className={cn("hidden lg:flex items-center space-x-8 text-base font-bold tracking-widest uppercase", textColorClass)}>
+          <nav className={cn("hidden lg:flex items-center space-x-8 text-base font-bold tracking-widest uppercase lg:-ml-4", textColorClass)}>
             <Link href="/shop" className="hover:text-accent-brown transition-all duration-300 transform hover:scale-110">Shop</Link>
             <Link href="/about" className="hover:text-accent-brown transition-all duration-300 transform hover:scale-110">About</Link>
             <Link href="/contact" className="hover:text-accent-brown transition-all duration-300 transform hover:scale-110">Contact</Link>
@@ -84,7 +84,7 @@ export function Navbar() {
           SEEERA
         </Link>
 
-        <div className={cn("flex items-center justify-end space-x-4 sm:space-x-6", textColorClass)}>
+        <div className={cn("flex items-center justify-end gap-4 sm:gap-6", textColorClass)}>
           <Link href={user ? "/profile" : "/login"} className="hover:text-accent-brown transition-all duration-300 transform hover:scale-110 hidden sm:block text-base font-bold tracking-widest uppercase">
             {user ? "Profile" : "Login"}
           </Link>
