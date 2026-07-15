@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Heart, Star, Eye } from 'lucide-react';
+import { Heart, Star, Eye, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { useCartStore } from '@/store/useCartStore';
@@ -59,8 +59,9 @@ export function AllProducts() {
           >
             All Products
           </motion.h2>
-          <Link href="/shop" className="hidden md:block text-xs font-bold tracking-widest uppercase bg-dark-brown-red text-white px-8 py-3 rounded-full hover:bg-primary-brown transition-colors shadow-sm">
+          <Link href="/shop" className="hidden md:inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase bg-dark-brown-red text-white px-8 py-3 rounded-full hover:bg-primary-brown transition-colors shadow-sm group">
             Shop All
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 
