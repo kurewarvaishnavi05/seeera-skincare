@@ -39,7 +39,7 @@ export default function OurStoryPage() {
             priority
           />
         </div>
-        
+
       </div>
     </main>
   );
