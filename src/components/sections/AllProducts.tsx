@@ -59,7 +59,7 @@ export function AllProducts() {
           >
             All Products
           </motion.h2>
-          <Link href="/shop" className="hidden md:block text-sm tracking-widest uppercase text-accent-brown hover:text-primary-brown transition-colors">
+          <Link href="/shop" className="hidden md:block text-xs font-bold tracking-widest uppercase bg-dark-brown-red text-white px-8 py-3 rounded-full hover:bg-primary-brown transition-colors shadow-sm">
             Shop All
           </Link>
         </div>
