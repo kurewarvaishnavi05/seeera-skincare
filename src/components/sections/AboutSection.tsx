@@ -30,7 +30,7 @@ export function AboutSection() {
           >
             <Image 
               src="/images/sun-care-that-cares.jpg" 
-              alt="SeeEra Sun Care That Cares" 
+              alt="Science Meets Luxury" 
               fill
               quality={100}
               className="object-cover object-top" 
