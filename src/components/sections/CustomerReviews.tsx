@@ -72,7 +72,7 @@ export function CustomerReviews() {
                 hidden: { opacity: 0, x: 50 },
                 visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } }
               }}
-              className="w-[280px] md:w-[320px] lg:w-[380px] shrink-0 snap-start bg-dark-brown-red backdrop-blur-sm p-8 rounded-2xl hover:-translate-y-2 hover:shadow-2xl hover:shadow-dark-brown-red/20 transition-all duration-700 border border-dark-brown-red/50 group flex flex-col"
+              className="w-[260px] md:w-[280px] lg:w-[320px] shrink-0 snap-start bg-dark-brown-red backdrop-blur-sm p-6 rounded-2xl hover:-translate-y-2 hover:shadow-2xl hover:shadow-dark-brown-red/20 transition-all duration-700 border border-dark-brown-red/50 group flex flex-col"
             >
               <div className="flex mb-4 text-[#FFD700]">
                 {[...Array(5)].map((_, idx) => (
