@@ -35,7 +35,7 @@ export function HeroSection() {
       {/* Background Image with Parallax */}
       <motion.div style={{ y }} className="absolute inset-0 z-0 scale-105">
         <Image 
-          src="/images/hero-banner-new.jpg" 
+          src="/images/hero-woman.jpg" 
           alt="Seeera Skincare Model" 
           fill
           priority
