@@ -72,20 +72,20 @@ export function CustomerReviews() {
                 hidden: { opacity: 0, x: 50 },
                 visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } }
               }}
-              className="w-[260px] md:w-[280px] lg:w-[320px] shrink-0 snap-start bg-dark-brown-red backdrop-blur-sm p-6 rounded-2xl hover:-translate-y-2 hover:shadow-2xl hover:shadow-dark-brown-red/20 transition-all duration-700 border border-dark-brown-red/50 group flex flex-col"
+              className="w-[260px] md:w-[280px] lg:w-[320px] shrink-0 snap-start bg-white p-6 rounded-2xl hover:-translate-y-2 hover:shadow-lg transition-all duration-500 border border-gray-100 flex flex-col"
             >
               <div className="flex mb-4 text-[#FFD700]">
                 {[...Array(5)].map((_, idx) => (
                   <Star key={idx} className="w-5 h-5 fill-current border-none" />
                 ))}
               </div>
-              <p className="text-cream/90 font-light text-sm mb-6 leading-relaxed flex-1 text-left">
+              <p className="text-dark-brown font-light text-sm mb-6 leading-relaxed flex-1 text-left">
                 {review.text}
               </p>
               <div className="text-left mt-auto">
-                <p className="text-sm font-semibold tracking-widest text-white">{review.author}</p>
+                <p className="text-xs font-semibold tracking-widest text-primary-brown">{review.author}</p>
                 {review.tag && (
-                  <p className="text-xs text-cream/50 mt-1">{review.tag}</p>
+                  <p className="text-xs text-dark-brown/50 mt-1">{review.tag}</p>
                 )}
               </div>
             </motion.div>
