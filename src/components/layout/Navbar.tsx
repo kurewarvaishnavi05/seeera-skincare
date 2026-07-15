@@ -84,7 +84,7 @@ export function Navbar() {
           SEEERA
         </Link>
 
-        <div className={cn("flex items-center justify-end gap-4 sm:gap-6", textColorClass)}>
+        <div className={cn("flex items-center justify-end gap-4 sm:gap-6 lg:-mr-12", textColorClass)}>
           <Link href={user ? "/profile" : "/login"} className="hover:text-accent-brown transition-all duration-300 transform hover:scale-110 hidden sm:block text-base font-bold tracking-widest uppercase">
             {user ? "Profile" : "Login"}
           </Link>
