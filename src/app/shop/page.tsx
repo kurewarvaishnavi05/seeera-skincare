@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Heart, Star, Eye } from 'lucide-react';
 import Link from 'next/link';
+import { Navbar } from '@/components/layout/Navbar';
+import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/Button';
 import { useCartStore } from '@/store/useCartStore';
 import { useWishlistStore } from '@/store/useWishlistStore';
@@ -49,8 +51,9 @@ export default function ShopPage() {
   }, []);
 
   return (
-    <main className="pt-32 pb-24 min-h-screen bg-[#F8F5F2]">
-      <div className="container mx-auto px-6 max-w-7xl">
+    <main className="pt-32 min-h-screen bg-[#F8F5F2] flex flex-col">
+      <Navbar />
+      <div className="container mx-auto px-6 max-w-7xl flex-grow pb-24">
         <div className="text-center mb-16">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -71,8 +74,8 @@ export default function ShopPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1, duration: 0.8 }}
             >
-              <div className="flex flex-col h-full group bg-white rounded-[20px] p-4 lg:p-6 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500">
-                <Link href={`/product/${product.slug}`} className="block relative aspect-square bg-cream/30 rounded-2xl overflow-hidden mb-8">
+              <div className="flex flex-col h-full group hover:-translate-y-2 transition-all duration-500">
+                <Link href={`/product/${product.slug}`} className="block relative aspect-square overflow-hidden mb-8">
                   {/* Badges */}
                   {product.badges && product.badges.length > 0 && (
                     <div className="absolute top-4 left-4 z-20 flex flex-col gap-2">
@@ -85,7 +88,7 @@ export default function ShopPage() {
                   )}
 
                   {/* Image */}
-                  <img src={product.image} alt={product.name} className="w-full h-full object-contain p-8 group-hover:scale-[1.05] transition-transform duration-700" />
+                  <img src={product.image} alt={product.name} className="w-full h-full object-contain p-2 group-hover:scale-[1.05] transition-transform duration-700" />
                   
                   {/* Quick View Hover */}
                   <div className="absolute inset-0 bg-primary-brown/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
@@ -174,6 +177,7 @@ export default function ShopPage() {
           ))}
         </div>
       </div>
+      <Footer />
     </main>
   );
 }
