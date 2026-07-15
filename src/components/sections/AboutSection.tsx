@@ -4,6 +4,8 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from '../ui/Button';
 
+import Image from 'next/image';
+
 export function AboutSection() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -26,10 +28,12 @@ export function AboutSection() {
             transition={{ duration: 1 }}
             className="w-full lg:w-[55%] aspect-[4/3] lg:aspect-[6/5] relative z-10 mt-8 lg:mt-0 overflow-hidden shadow-xl"
           >
-            <img 
+            <Image 
               src="/science_meets_luxury.jpg" 
               alt="Science Meets Luxury" 
-              className="absolute inset-0 w-full h-full object-cover object-top" 
+              fill
+              quality={100}
+              className="object-cover object-top" 
             />
           </motion.div>
 
