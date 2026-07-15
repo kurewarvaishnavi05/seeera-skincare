@@ -10,10 +10,10 @@ const benefits = [
 
 export function WhyChooseUs() {
   return (
-    <section className="py-2 lg:py-4 bg-cream overflow-hidden">
+    <section className="py-16 lg:py-24 bg-cream overflow-hidden">
 
       <div className="container mx-auto px-6">
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
           <div className="w-full lg:w-5/12">
             <motion.h2 
               className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-primary-brown mb-8 overflow-hidden flex"
@@ -35,7 +35,7 @@ export function WhyChooseUs() {
                 </motion.span>
               ))}
             </motion.h2>
-            <div className="space-y-4">
+            <div className="space-y-8 lg:space-y-10">
               {benefits.map((benefit, i) => (
                 <motion.div 
                   key={benefit.title}
@@ -44,8 +44,8 @@ export function WhyChooseUs() {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.2, duration: 0.8 }}
                 >
-                  <h3 className="text-xl lg:text-2xl font-heading font-bold text-primary-brown mb-2">{benefit.title}</h3>
-                  <p className="text-dark-brown font-light leading-relaxed text-base lg:text-lg">{benefit.desc}</p>
+                  <h3 className="text-xl lg:text-2xl font-heading font-bold text-primary-brown mb-3 lg:mb-4">{benefit.title}</h3>
+                  <p className="text-dark-brown font-light leading-loose text-base lg:text-lg">{benefit.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -60,7 +60,7 @@ export function WhyChooseUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1 }}
-              className="w-full h-full rounded-[32px] overflow-hidden shadow-2xl scale-[1.3] lg:scale-[1.6] origin-right"
+              className="w-full h-full rounded-[32px] overflow-hidden shadow-2xl scale-[1.1] lg:scale-[1.2] origin-right"
             >
               {/* Image 1 */}
               <img src="/images/why-seeera-1.jpg" alt="Seeera Key Ingredients" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
@@ -70,7 +70,7 @@ export function WhyChooseUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="w-full h-full rounded-[32px] overflow-hidden shadow-2xl scale-[1.3] lg:scale-[1.6] origin-left"
+              className="w-full h-full rounded-[32px] overflow-hidden shadow-2xl scale-[1.1] lg:scale-[1.2] origin-left"
             >
               {/* Image 2 */}
               <img src="/images/why-seeera-2.jpg" alt="Seeera Velvet Roozh" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
