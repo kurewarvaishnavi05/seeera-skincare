@@ -63,13 +63,13 @@ export function HeroSection() {
           }}
         >
           <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}>
-            <span className="inline-block text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-dark-brown-red mb-6 border border-dark-brown-red/30 rounded-full px-4 py-1.5 backdrop-blur-sm">
+            <span className="inline-block text-xs md:text-sm font-semibold tracking-[0.25em] uppercase text-dark-brown-red mb-6 border border-dark-brown-red/30 rounded-full px-5 py-2 backdrop-blur-sm">
               The New Era of Skincare
             </span>
           </motion.div>
           
           <motion.h1 
-            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-heading font-bold text-dark-brown-red leading-[1.05] mb-4 sm:mb-6 tracking-wide"
+            className="text-5xl sm:text-6xl md:text-8xl lg:text-[7rem] font-heading font-bold text-dark-brown-red leading-[1.05] mb-4 sm:mb-6 tracking-wide"
             variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
           >
             Protect. <br />
@@ -77,7 +77,7 @@ export function HeroSection() {
           </motion.h1>
           
           <motion.p 
-            className="text-base md:text-xl text-dark-brown-red/80 font-light leading-relaxed mb-10 max-w-lg md:max-w-xl"
+            className="text-lg md:text-2xl text-dark-brown-red/80 font-light leading-relaxed mb-10 max-w-lg md:max-w-2xl"
             variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
           >
             Advanced skincare powered by PDRN + CICA to protect, repair and reveal your natural glow.
@@ -87,7 +87,7 @@ export function HeroSection() {
             className="flex flex-col sm:flex-row gap-4"
             variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
           >
-            <Button size="lg" className="bg-dark-brown-red text-white hover:bg-primary-brown border-none px-12 rounded-none w-full sm:w-auto uppercase tracking-widest text-sm font-bold h-14 shadow-xl shadow-dark-brown-red/30 transition-all duration-300 hover:scale-105" href="/shop">
+            <Button size="lg" className="bg-dark-brown-red text-white hover:bg-primary-brown border-none px-14 rounded-none w-full sm:w-auto uppercase tracking-widest text-base font-bold h-16 shadow-xl shadow-dark-brown-red/30 transition-all duration-300 hover:scale-105" href="/shop">
               Shop Now
             </Button>
           </motion.div>
