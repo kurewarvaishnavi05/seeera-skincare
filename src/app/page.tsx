@@ -2,7 +2,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { AnnouncementBar } from "@/components/sections/AnnouncementBar";
-import { FeaturedProducts } from "@/components/sections/FeaturedProducts";
+
 import { ShopByIngredient } from "@/components/sections/ShopByIngredient";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { IngredientsSection } from "@/components/sections/IngredientsSection";
@@ -24,14 +24,14 @@ export default function Home() {
       <HeroSection />
       <MarqueeSection />
       <TrustBar />
-      <FeaturedProducts />
+      <AllProducts />
       <ShopByIngredient />
       <WhyChooseUs />
       <AboutSection />
       <BlogPreview />
       <ResultsSection />
       <IngredientsSection />
-      <AllProducts />
+
 
       <CustomerReviews />
       <FAQSection />
