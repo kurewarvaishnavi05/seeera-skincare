@@ -73,7 +73,7 @@ export function Navbar() {
           >
             <Menu className="w-6 h-6" />
           </button>
-          <nav className={cn("hidden lg:flex items-center space-x-8 text-base font-bold tracking-widest uppercase lg:-ml-12", textColorClass)}>
+          <nav className={cn("hidden lg:flex items-center space-x-8 text-base font-bold tracking-widest uppercase lg:-ml-32", textColorClass)}>
             <Link href="/shop" className="hover:text-accent-brown transition-all duration-300 transform hover:scale-110">Shop</Link>
             <Link href="/about" className="hover:text-accent-brown transition-all duration-300 transform hover:scale-110">About</Link>
             <Link href="/contact" className="hover:text-accent-brown transition-all duration-300 transform hover:scale-110">Contact</Link>
