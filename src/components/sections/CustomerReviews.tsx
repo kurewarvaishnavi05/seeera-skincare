@@ -55,42 +55,33 @@ export function CustomerReviews() {
           Real Results
         </motion.h2>
         
-        <motion.div 
-          className="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar px-6 sm:px-0"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={{
-            hidden: { opacity: 0 },
-            visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
-          }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {reviews.map((review, i) => (
             <motion.div 
               key={review.id}
-              variants={{
-                hidden: { opacity: 0, x: 50 },
-                visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } }
-              }}
-              className="min-w-[280px] md:min-w-[320px] lg:min-w-[380px] shrink-0 snap-start bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex flex-col hover:shadow-md transition-shadow duration-300"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.6 }}
+              className="bg-dark-brown-red backdrop-blur-sm p-8 rounded-2xl hover:-translate-y-4 hover:shadow-2xl hover:shadow-dark-brown-red/20 transition-all duration-700 border border-dark-brown-red/50 group flex flex-col"
             >
-              <div className="flex mb-3 text-[#FFD700]">
+              <div className="flex mb-4 text-[#FFD700]">
                 {[...Array(5)].map((_, idx) => (
                   <Star key={idx} className="w-5 h-5 fill-current border-none" />
                 ))}
               </div>
-              <p className="text-dark-brown font-light text-sm mb-4 leading-relaxed flex-1 text-left">
+              <p className="text-cream/90 font-light text-sm mb-6 leading-relaxed flex-1 text-left">
                 {review.text}
               </p>
               <div className="text-left mt-auto">
-                <p className="text-xs font-semibold tracking-widest text-primary-brown">{review.author}</p>
+                <p className="text-sm font-semibold tracking-widest text-white">{review.author}</p>
                 {review.tag && (
-                  <p className="text-xs text-dark-brown/50 mt-1">{review.tag}</p>
+                  <p className="text-xs text-cream/50 mt-1">{review.tag}</p>
                 )}
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
